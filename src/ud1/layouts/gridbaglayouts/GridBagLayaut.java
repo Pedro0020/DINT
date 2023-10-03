@@ -27,169 +27,162 @@ public class GridBagLayaut extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        lblNome = new javax.swing.JLabel();
-        lblApellido1 = new javax.swing.JLabel();
-        lblApellido2 = new javax.swing.JLabel();
+        lblPrezoUnidade = new javax.swing.JLabel();
+        txtPrezoUnidade = new javax.swing.JTextField();
+        lblPrezoSinIvE = new javax.swing.JLabel();
+        txtPrezoSenIVE = new javax.swing.JTextField();
+        lblIVE = new javax.swing.JLabel();
+        txtIVE = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        btnRealizarPedido = new javax.swing.JButton();
+        btnLimpiarFormulario = new javax.swing.JButton();
+        txtArticulo = new javax.swing.JTextField();
+        lblUnidades = new javax.swing.JLabel();
+        lblArticulo = new javax.swing.JLabel();
+        txtUnidades = new javax.swing.JTextField();
+        lblPrezoIVE = new javax.swing.JLabel();
+        txtPrezoIVE = new javax.swing.JTextField();
         lblObservacions = new javax.swing.JLabel();
-        lblIdade = new javax.swing.JLabel();
-        lblTlfnFixo = new javax.swing.JLabel();
-        txtTlfnMobil = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        txtApellido1 = new javax.swing.JTextField();
-        txtApellido2 = new javax.swing.JTextField();
-        txtObservacions = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        brnGardar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        btnPechar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtarObservacions = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        lblNome.setText("Nome");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 19, 0, 0);
-        getContentPane().add(lblNome, gridBagConstraints);
-
-        lblApellido1.setText("Apellido 1");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 20;
-        gridBagConstraints.ipadx = -16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 6, 0, 0);
-        getContentPane().add(lblApellido1, gridBagConstraints);
-
-        lblApellido2.setText("Apellido 2");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 28;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 26, 0, 0);
-        getContentPane().add(lblApellido2, gridBagConstraints);
-
-        lblObservacions.setText("Observacions");
+        lblPrezoUnidade.setText("Prezo/Unidade");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(16, 20, 0, 0);
-        getContentPane().add(lblObservacions, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(lblPrezoUnidade, gridBagConstraints);
 
-        lblIdade.setText("Idade");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(36, 40, 0, 0);
-        getContentPane().add(lblIdade, gridBagConstraints);
-
-        lblTlfnFixo.setText("Tlfn. Fixo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 40, 0, 0);
-        getContentPane().add(lblTlfnFixo, gridBagConstraints);
-
-        txtTlfnMobil.setText("Tlf. Mobil");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 40, 0, 0);
-        getContentPane().add(txtTlfnMobil, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 11, 0, 0);
-        getContentPane().add(txtNome, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 27;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 26, 0, 0);
-        getContentPane().add(txtApellido1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 8, 0, 0);
-        getContentPane().add(txtApellido2, gridBagConstraints);
+        txtPrezoUnidade.setMinimumSize(new java.awt.Dimension(200, 24));
+        txtPrezoUnidade.setPreferredSize(new java.awt.Dimension(200, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 26;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(26, 19, 0, 0);
-        getContentPane().add(txtObservacions, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 19;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 11, 0, 0);
-        getContentPane().add(jTextField1, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(txtPrezoUnidade, gridBagConstraints);
 
-        jTextField2.setText(" ");
+        lblPrezoSinIvE.setText("Prezo sen I.V.E");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 19;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 11, 36, 0);
-        getContentPane().add(jTextField2, gridBagConstraints);
-
-        brnGardar.setText("Gardar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 67;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(26, 18, 0, 17);
-        getContentPane().add(brnGardar, gridBagConstraints);
-
-        btnLimpiar.setText("Limpar");
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(lblPrezoSinIvE, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 67;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(txtPrezoSenIVE, gridBagConstraints);
+
+        lblIVE.setText("I.V.E");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(lblIVE, gridBagConstraints);
+
+        txtIVE.setMaximumSize(new java.awt.Dimension(200, 24));
+        txtIVE.setMinimumSize(new java.awt.Dimension(200, 24));
+        txtIVE.setPreferredSize(new java.awt.Dimension(200, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(txtIVE, gridBagConstraints);
+
+        jButton2.setText("Pechar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(jButton2, gridBagConstraints);
+
+        btnRealizarPedido.setText("Realizar pedido");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(btnRealizarPedido, gridBagConstraints);
+
+        btnLimpiarFormulario.setText("Limpiar formulario");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(btnLimpiarFormulario, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(txtArticulo, gridBagConstraints);
+
+        lblUnidades.setText("Unidades");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(lblUnidades, gridBagConstraints);
+
+        lblArticulo.setText("Articulo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(lblArticulo, gridBagConstraints);
+
+        txtUnidades.setText(" ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(txtUnidades, gridBagConstraints);
+
+        lblPrezoIVE.setText("Prezo con I.V.E");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(lblPrezoIVE, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(txtPrezoIVE, gridBagConstraints);
+
+        lblObservacions.setText("Observacións");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(16, 18, 0, 17);
-        getContentPane().add(btnLimpiar, gridBagConstraints);
+        getContentPane().add(lblObservacions, gridBagConstraints);
 
-        btnPechar.setText("Pechar");
+        txtarObservacions.setColumns(20);
+        txtarObservacions.setRows(5);
+        jScrollPane2.setViewportView(txtarObservacions);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 67;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(16, 18, 0, 17);
-        getContentPane().add(btnPechar, gridBagConstraints);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 20;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(jScrollPane2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,21 +223,23 @@ public class GridBagLayaut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton brnGardar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnPechar;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel lblApellido1;
-    private javax.swing.JLabel lblApellido2;
-    private javax.swing.JLabel lblIdade;
-    private javax.swing.JLabel lblNome;
+    private javax.swing.JButton btnLimpiarFormulario;
+    private javax.swing.JButton btnRealizarPedido;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblArticulo;
+    private javax.swing.JLabel lblIVE;
     private javax.swing.JLabel lblObservacions;
-    private javax.swing.JLabel lblTlfnFixo;
-    private javax.swing.JTextField txtApellido1;
-    private javax.swing.JTextField txtApellido2;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtObservacions;
-    private javax.swing.JLabel txtTlfnMobil;
+    private javax.swing.JLabel lblPrezoIVE;
+    private javax.swing.JLabel lblPrezoSinIvE;
+    private javax.swing.JLabel lblPrezoUnidade;
+    private javax.swing.JLabel lblUnidades;
+    private javax.swing.JTextField txtArticulo;
+    private javax.swing.JTextField txtIVE;
+    private javax.swing.JTextField txtPrezoIVE;
+    private javax.swing.JTextField txtPrezoSenIVE;
+    private javax.swing.JTextField txtPrezoUnidade;
+    private javax.swing.JTextField txtUnidades;
+    private javax.swing.JTextArea txtarObservacions;
     // End of variables declaration//GEN-END:variables
 }

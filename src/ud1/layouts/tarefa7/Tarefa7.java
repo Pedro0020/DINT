@@ -4,6 +4,8 @@
  */
 package ud1.layouts.tarefa7;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author alumno
@@ -27,7 +29,7 @@ public class Tarefa7 extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        panelIzquierda = new javax.swing.JPanel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 13));
         jButton1 = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 13));
@@ -37,23 +39,29 @@ public class Tarefa7 extends javax.swing.JFrame {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 13));
         jButton4 = new javax.swing.JButton();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 13));
-        jPanel2 = new javax.swing.JPanel();
-        pbt1 = new javax.swing.JPanel();
-        pbt2 = new javax.swing.JPanel();
-        pbt3 = new javax.swing.JPanel();
+        panelCentral = new javax.swing.JPanel();
+        pnlFlow = new javax.swing.JPanel();
+        pnlBox = new javax.swing.JPanel();
+        pnlGrid = new javax.swing.JPanel();
+        pnlNull = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.PAGE_AXIS));
-        jPanel1.add(filler4);
+        panelIzquierda.setBackground(new java.awt.Color(0, 0, 0));
+        panelIzquierda.setLayout(new javax.swing.BoxLayout(panelIzquierda, javax.swing.BoxLayout.PAGE_AXIS));
+        panelIzquierda.add(filler4);
 
         jButton1.setText("FlowLayaut");
         buttonGroup1.add(jButton1);
         jButton1.setMaximumSize(new java.awt.Dimension(111, 80));
-        jPanel1.add(jButton1);
-        jPanel1.add(filler1);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelIzquierda.add(jButton1);
+        panelIzquierda.add(filler1);
 
         jButton2.setText("BoxLayout X");
         buttonGroup1.add(jButton2);
@@ -63,72 +71,65 @@ public class Tarefa7 extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jPanel1.add(filler2);
+        panelIzquierda.add(jButton2);
+        panelIzquierda.add(filler2);
 
         jButton3.setText("GridLayout");
         buttonGroup1.add(jButton3);
         jButton3.setMaximumSize(new java.awt.Dimension(111, 80));
-        jPanel1.add(jButton3);
-        jPanel1.add(filler3);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        panelIzquierda.add(jButton3);
+        panelIzquierda.add(filler3);
 
         jButton4.setText("NullLayout");
         buttonGroup1.add(jButton4);
         jButton4.setMaximumSize(new java.awt.Dimension(111, 80));
-        jPanel1.add(jButton4);
-        jPanel1.add(filler5);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        panelIzquierda.add(jButton4);
+        panelIzquierda.add(filler5);
 
-        getContentPane().add(jPanel1);
+        getContentPane().add(panelIzquierda);
 
-        jPanel2.setLayout(new java.awt.CardLayout());
+        panelCentral.setLayout(new java.awt.CardLayout());
+        panelCentral.add(pnlFlow, "card2");
 
-        javax.swing.GroupLayout pbt1Layout = new javax.swing.GroupLayout(pbt1);
-        pbt1.setLayout(pbt1Layout);
-        pbt1Layout.setHorizontalGroup(
-            pbt1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-        pbt1Layout.setVerticalGroup(
-            pbt1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        pnlBox.setLayout(new javax.swing.BoxLayout(pnlBox, javax.swing.BoxLayout.LINE_AXIS));
+        panelCentral.add(pnlBox, "card3");
 
-        jPanel2.add(pbt1, "card2");
+        pnlGrid.setLayout(new java.awt.GridLayout(1, 0));
+        panelCentral.add(pnlGrid, "card4");
 
-        javax.swing.GroupLayout pbt2Layout = new javax.swing.GroupLayout(pbt2);
-        pbt2.setLayout(pbt2Layout);
-        pbt2Layout.setHorizontalGroup(
-            pbt2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-        pbt2Layout.setVerticalGroup(
-            pbt2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        pnlNull.setLayout(null);
+        panelCentral.add(pnlNull, "card5");
 
-        jPanel2.add(pbt2, "card3");
-
-        javax.swing.GroupLayout pbt3Layout = new javax.swing.GroupLayout(pbt3);
-        pbt3.setLayout(pbt3Layout);
-        pbt3Layout.setHorizontalGroup(
-            pbt3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-        pbt3Layout.setVerticalGroup(
-            pbt3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(pbt3, "card4");
-
-        getContentPane().add(jPanel2);
+        getContentPane().add(panelCentral);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card3");     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card2");     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card4");     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card5");     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,10 +177,11 @@ public class Tarefa7 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel pbt1;
-    private javax.swing.JPanel pbt2;
-    private javax.swing.JPanel pbt3;
+    private javax.swing.JPanel panelCentral;
+    private javax.swing.JPanel panelIzquierda;
+    private javax.swing.JPanel pnlBox;
+    private javax.swing.JPanel pnlFlow;
+    private javax.swing.JPanel pnlGrid;
+    private javax.swing.JPanel pnlNull;
     // End of variables declaration//GEN-END:variables
 }
