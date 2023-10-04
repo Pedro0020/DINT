@@ -41,9 +41,38 @@ public class Tarefa7 extends javax.swing.JFrame {
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 13));
         panelCentral = new javax.swing.JPanel();
         pnlFlow = new javax.swing.JPanel();
+        btnf1 = new javax.swing.JButton();
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(15, 0), new java.awt.Dimension(32767, 0));
+        btnf2 = new javax.swing.JButton();
+        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(15, 0), new java.awt.Dimension(32767, 0));
+        btnf3 = new javax.swing.JButton();
+        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(15, 0), new java.awt.Dimension(32767, 0));
+        btnf4 = new javax.swing.JButton();
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 32767));
         pnlBox = new javax.swing.JPanel();
+        btnb1 = new javax.swing.JButton();
+        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        btnb2 = new javax.swing.JButton();
+        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        txtb1 = new javax.swing.JTextField();
+        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        btnb3 = new javax.swing.JButton();
         pnlGrid = new javax.swing.JPanel();
+        btng1 = new javax.swing.JButton();
+        btng2 = new javax.swing.JButton();
+        btng3 = new javax.swing.JButton();
+        btng4 = new javax.swing.JButton();
+        btng5 = new javax.swing.JButton();
+        btng6 = new javax.swing.JButton();
+        btng7 = new javax.swing.JButton();
+        btng8 = new javax.swing.JButton();
+        btng9 = new javax.swing.JButton();
         pnlNull = new javax.swing.JPanel();
+        btnn1 = new javax.swing.JButton();
+        btnn2 = new javax.swing.JButton();
+        textn1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtan1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -99,15 +128,109 @@ public class Tarefa7 extends javax.swing.JFrame {
         getContentPane().add(panelIzquierda);
 
         panelCentral.setLayout(new java.awt.CardLayout());
+
+        btnf1.setText("Boton1");
+        btnf1.setPreferredSize(new java.awt.Dimension(120, 24));
+        btnf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnf1ActionPerformed(evt);
+            }
+        });
+        pnlFlow.add(btnf1);
+        pnlFlow.add(filler8);
+
+        btnf2.setText("Boton 2");
+        pnlFlow.add(btnf2);
+        pnlFlow.add(filler7);
+
+        btnf3.setText("Boton 3");
+        btnf3.setPreferredSize(new java.awt.Dimension(120, 24));
+        btnf3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnf3ActionPerformed(evt);
+            }
+        });
+        pnlFlow.add(btnf3);
+        pnlFlow.add(filler12);
+
+        btnf4.setText("Boton 4");
+        btnf4.setPreferredSize(new java.awt.Dimension(250, 24));
+        pnlFlow.add(btnf4);
+        pnlFlow.add(filler6);
+
         panelCentral.add(pnlFlow, "card2");
 
         pnlBox.setLayout(new javax.swing.BoxLayout(pnlBox, javax.swing.BoxLayout.LINE_AXIS));
+
+        btnb1.setText("Boton 1");
+        pnlBox.add(btnb1);
+        pnlBox.add(filler11);
+
+        btnb2.setText("Boton 2");
+        pnlBox.add(btnb2);
+        pnlBox.add(filler10);
+
+        txtb1.setMaximumSize(new java.awt.Dimension(100, 24));
+        txtb1.setMinimumSize(new java.awt.Dimension(100, 24));
+        txtb1.setPreferredSize(new java.awt.Dimension(200, 24));
+        pnlBox.add(txtb1);
+        pnlBox.add(filler9);
+
+        btnb3.setText("Boton 3");
+        pnlBox.add(btnb3);
+
         panelCentral.add(pnlBox, "card3");
 
-        pnlGrid.setLayout(new java.awt.GridLayout(1, 0));
+        pnlGrid.setLayout(new java.awt.GridLayout(3, 3, 12, 12));
+
+        btng1.setText("Boton 1");
+        pnlGrid.add(btng1);
+
+        btng2.setText("Boton 2");
+        pnlGrid.add(btng2);
+
+        btng3.setText("Boton 3");
+        pnlGrid.add(btng3);
+
+        btng4.setText("Boton 4");
+        pnlGrid.add(btng4);
+
+        btng5.setText("Boton 5");
+        pnlGrid.add(btng5);
+
+        btng6.setText("Boton 6");
+        pnlGrid.add(btng6);
+
+        btng7.setText("Boton 7");
+        pnlGrid.add(btng7);
+
+        btng8.setText("Boton 8");
+        pnlGrid.add(btng8);
+
+        btng9.setText("Boton 9");
+        pnlGrid.add(btng9);
+
         panelCentral.add(pnlGrid, "card4");
 
         pnlNull.setLayout(null);
+
+        btnn1.setText("Boton 1");
+        pnlNull.add(btnn1);
+        btnn1.setBounds(20, 20, 80, 24);
+
+        btnn2.setText("Boton 2");
+        pnlNull.add(btnn2);
+        btnn2.setBounds(320, 20, 80, 24);
+        pnlNull.add(textn1);
+        textn1.setBounds(120, 20, 180, 24);
+
+        txtan1.setColumns(20);
+        txtan1.setRows(5);
+        jScrollPane1.setViewportView(txtan1);
+
+        pnlNull.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 60, 380, 130);
+
         panelCentral.add(pnlNull, "card5");
 
         getContentPane().add(panelCentral);
@@ -130,6 +253,14 @@ CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
         cardLayout.show(this.panelCentral, "card5");     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnf3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnf3ActionPerformed
+
+    private void btnf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnf1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,21 +298,50 @@ CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnb1;
+    private javax.swing.JButton btnb2;
+    private javax.swing.JButton btnb3;
+    private javax.swing.JButton btnf1;
+    private javax.swing.JButton btnf2;
+    private javax.swing.JButton btnf3;
+    private javax.swing.JButton btnf4;
+    private javax.swing.JButton btng1;
+    private javax.swing.JButton btng2;
+    private javax.swing.JButton btng3;
+    private javax.swing.JButton btng4;
+    private javax.swing.JButton btng5;
+    private javax.swing.JButton btng6;
+    private javax.swing.JButton btng7;
+    private javax.swing.JButton btng8;
+    private javax.swing.JButton btng9;
+    private javax.swing.JButton btnn1;
+    private javax.swing.JButton btnn2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler10;
+    private javax.swing.Box.Filler filler11;
+    private javax.swing.Box.Filler filler12;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
+    private javax.swing.Box.Filler filler7;
+    private javax.swing.Box.Filler filler8;
+    private javax.swing.Box.Filler filler9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelIzquierda;
     private javax.swing.JPanel pnlBox;
     private javax.swing.JPanel pnlFlow;
     private javax.swing.JPanel pnlGrid;
     private javax.swing.JPanel pnlNull;
+    private javax.swing.JTextField textn1;
+    private javax.swing.JTextArea txtan1;
+    private javax.swing.JTextField txtb1;
     // End of variables declaration//GEN-END:variables
 }
