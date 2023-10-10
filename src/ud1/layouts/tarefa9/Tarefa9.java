@@ -4,6 +4,8 @@
  */
 package ud1.layouts.tarefa9;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author alumno
@@ -15,6 +17,7 @@ public class Tarefa9 extends javax.swing.JFrame {
      */
     public Tarefa9() {
         initComponents();
+        
     }
 
     /**
@@ -27,6 +30,7 @@ public class Tarefa9 extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         panelIzquierda = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 20));
         btnCalculadora = new javax.swing.JButton();
@@ -64,24 +68,71 @@ public class Tarefa9 extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        btn0 = new javax.swing.JButton();
+        btnPunto = new javax.swing.JButton();
+        btnC = new javax.swing.JButton();
+        btnDivision = new javax.swing.JButton();
+        btnIgual = new javax.swing.JButton();
+        btnRaiz = new javax.swing.JButton();
         panelDatos = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
+        lblCiudad = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        btnNuevo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtCiudad = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         panelNotas = new javax.swing.JPanel();
+        pnaleIzquierdaNotas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        panelDerechaNotas = new javax.swing.JPanel();
+        btn1 = new javax.swing.JButton();
+        btn2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         panelIzquierda.setBackground(new java.awt.Color(102, 204, 255));
         panelIzquierda.setLayout(new javax.swing.BoxLayout(panelIzquierda, javax.swing.BoxLayout.PAGE_AXIS));
         panelIzquierda.add(filler3);
 
         btnCalculadora.setText("Calculadora");
+        buttonGroup1.add(btnCalculadora);
+        btnCalculadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculadoraActionPerformed(evt);
+            }
+        });
         panelIzquierda.add(btnCalculadora);
         panelIzquierda.add(filler1);
 
         btnDatos.setText("Datos");
+        buttonGroup1.add(btnDatos);
+        btnDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatosActionPerformed(evt);
+            }
+        });
         panelIzquierda.add(btnDatos);
         panelIzquierda.add(filler2);
 
         btnNotas.setText("Notas");
+        buttonGroup1.add(btnNotas);
+        btnNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNotasActionPerformed(evt);
+            }
+        });
         panelIzquierda.add(btnNotas);
 
         getContentPane().add(panelIzquierda, java.awt.BorderLayout.LINE_START);
@@ -106,7 +157,7 @@ public class Tarefa9 extends javax.swing.JFrame {
             .addGroup(panelInferiorLayout.createSequentialGroup()
                 .addGap(143, 143, 143)
                 .addComponent(lblInfo)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
         panelInferiorLayout.setVerticalGroup(
             panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,6 +190,11 @@ public class Tarefa9 extends javax.swing.JFrame {
         panelSuperior.add(filler4);
 
         btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         panelSuperior.add(btnLogin);
 
         getContentPane().add(panelSuperior, java.awt.BorderLayout.PAGE_START);
@@ -146,6 +202,9 @@ public class Tarefa9 extends javax.swing.JFrame {
         panelCentral.setLayout(new java.awt.CardLayout());
 
         panelCalculadora.setLayout(new java.awt.GridBagLayout());
+
+        jTextField1.setMinimumSize(null);
+        jTextField1.setPreferredSize(new java.awt.Dimension(100, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -278,31 +337,212 @@ public class Tarefa9 extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
         panelCalculadora.add(jButton12, gridBagConstraints);
 
+        btn0.setText("0");
+        btn0.setPreferredSize(new java.awt.Dimension(50, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 6, 5);
+        panelCalculadora.add(btn0, gridBagConstraints);
+
+        btnPunto.setText(".");
+        btnPunto.setPreferredSize(new java.awt.Dimension(50, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        panelCalculadora.add(btnPunto, gridBagConstraints);
+
+        btnC.setText("C");
+        btnC.setPreferredSize(new java.awt.Dimension(50, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        panelCalculadora.add(btnC, gridBagConstraints);
+
+        btnDivision.setText("/");
+        btnDivision.setPreferredSize(new java.awt.Dimension(50, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        panelCalculadora.add(btnDivision, gridBagConstraints);
+
+        btnIgual.setText("=");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 5);
+        panelCalculadora.add(btnIgual, gridBagConstraints);
+
+        btnRaiz.setText("v");
+        btnRaiz.setPreferredSize(new java.awt.Dimension(50, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        panelCalculadora.add(btnRaiz, gridBagConstraints);
+
         panelCentral.add(panelCalculadora, "card2");
 
-        javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
-        panelDatos.setLayout(panelDatosLayout);
-        panelDatosLayout.setHorizontalGroup(
-            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-        );
-        panelDatosLayout.setVerticalGroup(
-            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
+        panelDatos.setLayout(new java.awt.GridBagLayout());
+
+        lblNombre.setText("NOMBRE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        panelDatos.add(lblNombre, gridBagConstraints);
+
+        lblApellido.setText("APELLIDO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        panelDatos.add(lblApellido, gridBagConstraints);
+
+        lblCiudad.setText("CIUDAD");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        panelDatos.add(lblCiudad, gridBagConstraints);
+
+        lblTelefono.setText("TELEFONO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        panelDatos.add(lblTelefono, gridBagConstraints);
+
+        btnNuevo.setText("NUEVO");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 22, 2);
+        panelDatos.add(btnNuevo, gridBagConstraints);
+
+        btnGuardar.setText("GUARDAR");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 22, 22, 14);
+        panelDatos.add(btnGuardar, gridBagConstraints);
+
+        btnCancelar.setText("CANCELAR");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 22, 22, 2);
+        panelDatos.add(btnCancelar, gridBagConstraints);
+
+        btnSalir.setText("SALIR");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 22, 22, 2);
+        panelDatos.add(btnSalir, gridBagConstraints);
+
+        txtNombre.setText(" ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 8, 10, 22);
+        panelDatos.add(txtNombre, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 8, 10, 22);
+        panelDatos.add(txtApellido, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 8, 10, 22);
+        panelDatos.add(txtCiudad, gridBagConstraints);
+
+        txtTelefono.setText(" ");
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 8, 22, 22);
+        panelDatos.add(txtTelefono, gridBagConstraints);
 
         panelCentral.add(panelDatos, "card3");
 
-        javax.swing.GroupLayout panelNotasLayout = new javax.swing.GroupLayout(panelNotas);
-        panelNotas.setLayout(panelNotasLayout);
-        panelNotasLayout.setHorizontalGroup(
-            panelNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+        panelNotas.setLayout(new javax.swing.BoxLayout(panelNotas, javax.swing.BoxLayout.LINE_AXIS));
+
+        pnaleIzquierdaNotas.setPreferredSize(new java.awt.Dimension(700, 380));
+        pnaleIzquierdaNotas.setLayout(new java.awt.CardLayout());
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        pnaleIzquierdaNotas.add(jScrollPane1, "card2");
+
+        panelNotas.add(pnaleIzquierdaNotas);
+
+        panelDerechaNotas.setPreferredSize(new java.awt.Dimension(150, 380));
+
+        btn1.setText("Boton 1");
+
+        btn2.setText("Boton 2");
+
+        javax.swing.GroupLayout panelDerechaNotasLayout = new javax.swing.GroupLayout(panelDerechaNotas);
+        panelDerechaNotas.setLayout(panelDerechaNotasLayout);
+        panelDerechaNotasLayout.setHorizontalGroup(
+            panelDerechaNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
         );
-        panelNotasLayout.setVerticalGroup(
-            panelNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+        panelDerechaNotasLayout.setVerticalGroup(
+            panelDerechaNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDerechaNotasLayout.createSequentialGroup()
+                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109)
+                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
+
+        panelNotas.add(panelDerechaNotas);
 
         panelCentral.add(panelNotas, "card4");
 
@@ -322,6 +562,44 @@ public class Tarefa9 extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void btnCalculadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculadoraActionPerformed
+        CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card2");    }//GEN-LAST:event_btnCalculadoraActionPerformed
+
+    private void btnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatosActionPerformed
+        CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card3");    }//GEN-LAST:event_btnDatosActionPerformed
+
+    private void btnNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotasActionPerformed
+        CardLayout cardLayout = (CardLayout) this.panelCentral.getLayout();
+        cardLayout.show(this.panelCentral, "card4");    }//GEN-LAST:event_btnNotasActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        this.btnNuevo.setEnabled(Boolean.FALSE);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+
+        if (this.txtUsuario.getText().equals(this.txtContraseña.getText())) {
+            this.btnNotas.setEnabled(true);
+            this.btnCalculadora.setEnabled(true);
+            this.btnDatos.setEnabled(true);
+            this.btnDesconectar.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        this.btnNotas.setEnabled(false);
+        this.btnCalculadora.setEnabled(false);
+        this.btnDatos.setEnabled(false);
+        this.btnDesconectar.setEnabled(false);
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
@@ -359,11 +637,24 @@ public class Tarefa9 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn0;
+    private javax.swing.JButton btn1;
+    private javax.swing.JButton btn2;
+    private javax.swing.JButton btnC;
     private javax.swing.JButton btnCalculadora;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDatos;
     private javax.swing.JButton btnDesconectar;
+    private javax.swing.JButton btnDivision;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnIgual;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnNotas;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnPunto;
+    private javax.swing.JButton btnRaiz;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
@@ -384,19 +675,31 @@ public class Tarefa9 extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblCiudad;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblInfo;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panelCalculadora;
     private javax.swing.JPanel panelCentral;
     private javax.swing.JPanel panelDatos;
     private javax.swing.JPanel panelDerecha;
+    private javax.swing.JPanel panelDerechaNotas;
     private javax.swing.JPanel panelInferior;
     private javax.swing.JPanel panelIzquierda;
     private javax.swing.JPanel panelNotas;
     private javax.swing.JPanel panelSuperior;
+    private javax.swing.JPanel pnaleIzquierdaNotas;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCiudad;
     private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

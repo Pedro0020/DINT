@@ -15,6 +15,7 @@ public class GroupLayaut extends javax.swing.JFrame {
      */
     public GroupLayaut() {
         initComponents();
+        
     }
 
     /**
