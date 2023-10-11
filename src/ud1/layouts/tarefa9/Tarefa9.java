@@ -17,7 +17,7 @@ public class Tarefa9 extends javax.swing.JFrame {
      */
     public Tarefa9() {
         initComponents();
-        
+
     }
 
     /**
@@ -56,18 +56,18 @@ public class Tarefa9 extends javax.swing.JFrame {
         panelCentral = new javax.swing.JPanel();
         panelCalculadora = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btn1c = new javax.swing.JButton();
+        btn2c = new javax.swing.JButton();
+        btn3 = new javax.swing.JButton();
+        btnMas = new javax.swing.JButton();
+        btn4 = new javax.swing.JButton();
+        btn5 = new javax.swing.JButton();
+        btn6 = new javax.swing.JButton();
+        btnMenos = new javax.swing.JButton();
+        btn7 = new javax.swing.JButton();
+        btn8 = new javax.swing.JButton();
+        btn9 = new javax.swing.JButton();
+        btnMult = new javax.swing.JButton();
         btn0 = new javax.swing.JButton();
         btnPunto = new javax.swing.JButton();
         btnC = new javax.swing.JButton();
@@ -141,6 +141,11 @@ public class Tarefa9 extends javax.swing.JFrame {
         panelDerecha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnDesconectar.setText("Desconectar");
+        btnDesconectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesconectarActionPerformed(evt);
+            }
+        });
         panelDerecha.add(btnDesconectar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
 
         getContentPane().add(panelDerecha, java.awt.BorderLayout.LINE_END);
@@ -214,38 +219,38 @@ public class Tarefa9 extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
         panelCalculadora.add(jTextField1, gridBagConstraints);
 
-        jButton1.setText("1");
-        jButton1.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn1c.setText("1");
+        btn1c.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 5);
-        panelCalculadora.add(jButton1, gridBagConstraints);
+        panelCalculadora.add(btn1c, gridBagConstraints);
 
-        jButton2.setText("2");
-        jButton2.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn2c.setText("2");
+        btn2c.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        panelCalculadora.add(jButton2, gridBagConstraints);
+        panelCalculadora.add(btn2c, gridBagConstraints);
 
-        jButton3.setText("3");
-        jButton3.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn3.setText("3");
+        btn3.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        panelCalculadora.add(jButton3, gridBagConstraints);
+        panelCalculadora.add(btn3, gridBagConstraints);
 
-        jButton4.setText("+");
-        jButton4.setPreferredSize(new java.awt.Dimension(50, 24));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnMas.setText("+");
+        btnMas.setPreferredSize(new java.awt.Dimension(50, 24));
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnMasActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -253,31 +258,31 @@ public class Tarefa9 extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
-        panelCalculadora.add(jButton4, gridBagConstraints);
+        panelCalculadora.add(btnMas, gridBagConstraints);
 
-        jButton5.setText("4");
-        jButton5.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn4.setText("4");
+        btn4.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 5);
-        panelCalculadora.add(jButton5, gridBagConstraints);
+        panelCalculadora.add(btn4, gridBagConstraints);
 
-        jButton6.setText("5");
-        jButton6.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn5.setText("5");
+        btn5.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        panelCalculadora.add(jButton6, gridBagConstraints);
+        panelCalculadora.add(btn5, gridBagConstraints);
 
-        jButton7.setText("6");
-        jButton7.setPreferredSize(new java.awt.Dimension(50, 24));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn6.setText("6");
+        btn6.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btn6ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -285,49 +290,49 @@ public class Tarefa9 extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        panelCalculadora.add(jButton7, gridBagConstraints);
+        panelCalculadora.add(btn6, gridBagConstraints);
 
-        jButton8.setText("-");
-        jButton8.setPreferredSize(new java.awt.Dimension(50, 24));
+        btnMenos.setText("-");
+        btnMenos.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(6, 5, 6, 0);
-        panelCalculadora.add(jButton8, gridBagConstraints);
+        panelCalculadora.add(btnMenos, gridBagConstraints);
 
-        jButton9.setText("7");
-        jButton9.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn7.setText("7");
+        btn7.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 6, 5);
-        panelCalculadora.add(jButton9, gridBagConstraints);
+        panelCalculadora.add(btn7, gridBagConstraints);
 
-        jButton10.setText("8");
-        jButton10.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn8.setText("8");
+        btn8.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        panelCalculadora.add(jButton10, gridBagConstraints);
+        panelCalculadora.add(btn8, gridBagConstraints);
 
-        jButton11.setText("9");
-        jButton11.setPreferredSize(new java.awt.Dimension(50, 24));
+        btn9.setText("9");
+        btn9.setPreferredSize(new java.awt.Dimension(50, 24));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        panelCalculadora.add(jButton11, gridBagConstraints);
+        panelCalculadora.add(btn9, gridBagConstraints);
 
-        jButton12.setText("*");
-        jButton12.setPreferredSize(new java.awt.Dimension(50, 24));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnMult.setText("*");
+        btnMult.setPreferredSize(new java.awt.Dimension(50, 24));
+        btnMult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnMultActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -335,7 +340,7 @@ public class Tarefa9 extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
-        panelCalculadora.add(jButton12, gridBagConstraints);
+        panelCalculadora.add(btnMult, gridBagConstraints);
 
         btn0.setText("0");
         btn0.setPreferredSize(new java.awt.Dimension(50, 24));
@@ -551,17 +556,17 @@ public class Tarefa9 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btn6ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnMasActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void btnMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_btnMultActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
@@ -590,6 +595,25 @@ public class Tarefa9 extends javax.swing.JFrame {
             this.btnCalculadora.setEnabled(true);
             this.btnDatos.setEnabled(true);
             this.btnDesconectar.setEnabled(true);
+            this.btn0.setEnabled(true);
+            this.btn1c.setEnabled(true);
+            this.btn2c.setEnabled(true);
+            this.btnC.setEnabled(true);
+            this.btn3.setEnabled(true);
+            this.btn4.setEnabled(true);
+            this.btn5.setEnabled(true);
+            this.btn6.setEnabled(true);
+            this.btn7.setEnabled(true);
+            this.btn8.setEnabled(true);
+            this.btn9.setEnabled(true);
+            this.btnDivision.setEnabled(true);
+            this.btnIgual.setEnabled(true);
+            this.btnMas.setEnabled(true);
+            this.btnMenos.setEnabled(true);
+            this.btnRaiz.setEnabled(true);
+            this.btnPunto.setEnabled(true);
+            this.btnMult.setEnabled(true);
+            this.jTextField1.setEnabled(true);
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -599,7 +623,32 @@ public class Tarefa9 extends javax.swing.JFrame {
         this.btnCalculadora.setEnabled(false);
         this.btnDatos.setEnabled(false);
         this.btnDesconectar.setEnabled(false);
+        this.btn0.setEnabled(false);
+        this.btn1c.setEnabled(false);
+        this.btn2c.setEnabled(false);
+        this.btnC.setEnabled(false);
+        this.btn3.setEnabled(false);
+        this.btn4.setEnabled(false);
+        this.btn5.setEnabled(false);
+        this.btn6.setEnabled(false);
+        this.btn7.setEnabled(false);
+        this.btn8.setEnabled(false);
+        this.btn9.setEnabled(false);
+        this.btnDivision.setEnabled(false);
+        this.btnIgual.setEnabled(false);
+        this.btnMas.setEnabled(false);
+        this.btnMenos.setEnabled(false);
+        this.btnRaiz.setEnabled(false);
+        this.btnPunto.setEnabled(false);
+        this.btnMult.setEnabled(false);
+        this.jTextField1.setEnabled(false);
+
+
     }//GEN-LAST:event_formComponentShown
+
+    private void btnDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesconectarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnDesconectarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -629,17 +678,24 @@ public class Tarefa9 extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tarefa9().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Tarefa9().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn0;
     private javax.swing.JButton btn1;
+    private javax.swing.JButton btn1c;
     private javax.swing.JButton btn2;
+    private javax.swing.JButton btn2c;
+    private javax.swing.JButton btn3;
+    private javax.swing.JButton btn4;
+    private javax.swing.JButton btn5;
+    private javax.swing.JButton btn6;
+    private javax.swing.JButton btn7;
+    private javax.swing.JButton btn8;
+    private javax.swing.JButton btn9;
     private javax.swing.JButton btnC;
     private javax.swing.JButton btnCalculadora;
     private javax.swing.JButton btnCancelar;
@@ -649,6 +705,9 @@ public class Tarefa9 extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIgual;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnMas;
+    private javax.swing.JButton btnMenos;
+    private javax.swing.JButton btnMult;
     private javax.swing.JButton btnNotas;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnPunto;
@@ -663,18 +722,6 @@ public class Tarefa9 extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;

@@ -21,18 +21,26 @@ import javax.swing.JTextField;
  * @author alumno
  */
 public class Tarefa6 extends javax.swing.JFrame {
-    
+
+    public static final double DESCUENTO_15 = 0.15;
+    public static final double DESCUENTO_10 = 0.10;
+    public static final double DESCUENTO_5 = 0.05;
+
     private int acumDesc;
-    private int precio;
-    private String nombre;
+    private double prezo;
+    private String nome;
+    private StringBuilder unir;
+    private int desc;
 
     /**
      * Creates new form Tarefa6
      */
     public Tarefa6() {
         this.acumDesc = 0;
-        this.nombre = null;
-        this.precio = 0;
+        this.desc = 0;
+        this.unir = new StringBuilder();
+        this.nome = null;
+        this.prezo = 0;
         initComponents();
     }
 
@@ -52,15 +60,15 @@ public class Tarefa6 extends javax.swing.JFrame {
         txtPeza = new javax.swing.JTextField();
         lblPrezo = new javax.swing.JLabel();
         txtPrezo = new javax.swing.JTextField();
-        lblUnidadesAdq = new javax.swing.JLabel();
-        rbtSin = new javax.swing.JRadioButton();
-        rbt5 = new javax.swing.JRadioButton();
-        rbt15 = new javax.swing.JRadioButton();
-        lblDescAdic = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtArea = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
         chEmpregado = new javax.swing.JCheckBox();
         chClientePremium = new javax.swing.JCheckBox();
-        txtArea = new javax.swing.JTextArea();
-        lblResultado = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        rbt5 = new javax.swing.JRadioButton();
+        rbt15 = new javax.swing.JRadioButton();
+        rbtSin = new javax.swing.JRadioButton();
         btnNovo = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
 
@@ -75,6 +83,12 @@ public class Tarefa6 extends javax.swing.JFrame {
 
         lblPeza.setText("Peza");
         panelPrincipal.add(lblPeza, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        txtPeza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPezaActionPerformed(evt);
+            }
+        });
         panelPrincipal.add(txtPeza, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 170, -1));
 
         lblPrezo.setText("Prezo");
@@ -82,6 +96,11 @@ public class Tarefa6 extends javax.swing.JFrame {
 
         txtPrezo.setMinimumSize(new java.awt.Dimension(70, 24));
         txtPrezo.setPreferredSize(new java.awt.Dimension(70, 24));
+        txtPrezo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrezoActionPerformed(evt);
+            }
+        });
         txtPrezo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrezoKeyTyped(evt);
@@ -89,46 +108,8 @@ public class Tarefa6 extends javax.swing.JFrame {
         });
         panelPrincipal.add(txtPrezo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
 
-        lblUnidadesAdq.setText("Unidades adquiridas");
-        panelPrincipal.add(lblUnidadesAdq, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 30));
-
-        btnGrupUnidades.add(rbtSin);
-        rbtSin.setText(" 1-10");
-        panelPrincipal.add(rbtSin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, 20));
-
-        btnGrupUnidades.add(rbt5);
-        rbt5.setText(" 11-50 (Desconto 5%)");
-        rbt5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt5ActionPerformed(evt);
-            }
-        });
-        panelPrincipal.add(rbt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 20));
-
-        btnGrupUnidades.add(rbt15);
-        rbt15.setText(" >50 (Desconto 15%)");
-        rbt15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt15ActionPerformed(evt);
-            }
-        });
-        panelPrincipal.add(rbt15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 170, 20));
-
-        lblDescAdic.setText("Descontos adicionais");
-        panelPrincipal.add(lblDescAdic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 20));
-
-        btnGroupAdicionais.add(chEmpregado);
-        chEmpregado.setText(" Empregado (Desconto 10%)");
-        chEmpregado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chEmpregadoActionPerformed(evt);
-            }
-        });
-        panelPrincipal.add(chEmpregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, 20));
-
-        btnGroupAdicionais.add(chClientePremium);
-        chClientePremium.setText(" Cliente premium (Desconto 5%)");
-        panelPrincipal.add(chClientePremium, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, 20));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado do calculo"));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         txtArea.setBackground(new java.awt.Color(255, 255, 102));
         txtArea.setColumns(20);
@@ -153,10 +134,61 @@ public class Tarefa6 extends javax.swing.JFrame {
                 txtAreaKeyPressed(evt);
             }
         });
-        panelPrincipal.add(txtArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 250, 210));
+        jPanel1.add(txtArea, java.awt.BorderLayout.CENTER);
 
-        lblResultado.setText("Resultado do cálculo");
-        panelPrincipal.add(lblResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        panelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 320, 260));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Descontos Adicionais"));
+        jPanel2.setMaximumSize(new java.awt.Dimension(270, 80));
+        jPanel2.setMinimumSize(new java.awt.Dimension(270, 80));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        btnGroupAdicionais.add(chEmpregado);
+        chEmpregado.setText(" Empregado (Desconto 10%)");
+        chEmpregado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chEmpregadoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(chEmpregado, java.awt.BorderLayout.CENTER);
+
+        btnGroupAdicionais.add(chClientePremium);
+        chClientePremium.setText(" Cliente premium (Desconto 5%)");
+        jPanel2.add(chClientePremium, java.awt.BorderLayout.PAGE_START);
+
+        panelPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 270, 80));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Unidades adquiridas"));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        btnGrupUnidades.add(rbt5);
+        rbt5.setText(" 11-50 (Desconto 5%)");
+        rbt5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rbt5, java.awt.BorderLayout.CENTER);
+
+        btnGrupUnidades.add(rbt15);
+        rbt15.setText(" >50 (Desconto 15%)");
+        rbt15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt15ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rbt15, java.awt.BorderLayout.PAGE_END);
+
+        btnGrupUnidades.add(rbtSin);
+        rbtSin.setText(" 1-10");
+        rbtSin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtSinActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rbtSin, java.awt.BorderLayout.PAGE_START);
+
+        panelPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 270, 90));
 
         btnNovo.setText("Novo cálculo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +196,6 @@ public class Tarefa6 extends javax.swing.JFrame {
                 btnNovoActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 180, -1));
 
         btnCalcular.setText("Calcular");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -172,19 +203,28 @@ public class Tarefa6 extends javax.swing.JFrame {
                 btnCalcularActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 180, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCalcular)
+                    .addComponent(btnNovo))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,31 +243,66 @@ public class Tarefa6 extends javax.swing.JFrame {
     }//GEN-LAST:event_chEmpregadoActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        this.nombre = this.txtPeza.getText();
-        this.precio = Integer.parseInt(this.txtPrezo.getText());
+        this.unir.delete(0, unir.length());
+        this.desc = 0;
+        this.nome = this.txtPeza.getText();
+        this.prezo = Double.parseDouble(this.txtPrezo.getText());
+        this.unir.append("Peza: ").append(this.nome).append("\n");
+        this.unir.append("Prezo sen descontos: ").append(this.prezo).append("\n");
+        this.unir.append("Descontos aplicados").append("\n");
+        this.unir.append("________________________").append("\n").append("\n");
+
         if (this.rbt5.isSelected()) {
-            this.precio -= (int) (this.precio * 0.05);
+            this.prezo -= this.prezo * DESCUENTO_5;
+            this.desc = (int) (100 * DESCUENTO_5);
+            this.unir.append("Desconto por unidades adquiridas 5%").append("\n");
         } else if (this.rbt15.isSelected()) {
-            this.precio -= (int) (this.precio * 0.15);
+            this.prezo -= this.prezo * DESCUENTO_15;
+            this.desc = (int) (100 * DESCUENTO_15);
+
+            this.unir.append("Desconto por unidades adquiridas 15%").append("\n");
+        } else {
+            this.unir.append("Sen desconto por unidades adquiridas").append("\n");
         }
-        
+
         if (this.chClientePremium.isSelected()) {
-            this.precio -= (int) (this.precio * 0.05);
+            this.prezo -= this.prezo * DESCUENTO_5;
+            this.desc += (int) (100 * DESCUENTO_5);
+
+            this.unir.append("Desconto adicionais 5%").append("\n");
+
         } else if (this.chEmpregado.isSelected()) {
-            this.precio -= (int) (this.precio * 0.10);
+            this.prezo -= this.prezo * DESCUENTO_10;
+            this.desc += (int) (100 * DESCUENTO_10);
+
+            this.unir.append("Desconto adicionais 10%").append("\n");
+
+        } else {
+            this.unir.append("Sen desconto adicionais").append("\n");
+
         }
-        this.txtArea.setText(this.precio + "");
+        if (this.prezo != Double.parseDouble(this.txtPrezo.getText())) {
+            this.unir.append("Descontos total sobre o precio final ").append(this.desc).append("%").append("\n");
+            this.unir.append("Prezo con descontos ").append(this.prezo).append("\n");
+        } else {
+            this.unir.append("Prezo sen ningun desconto ").append(this.prezo);
+        }
+        this.txtArea.setText(unir.toString());
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         this.acumDesc = 0;
-        this.nombre = null;
-        this.precio = 0;
+        this.nome = null;
+        this.prezo = 0;
         this.btnGrupUnidades.clearSelection();
         this.txtPeza.setText("");
         this.txtPrezo.setText("");
         this.btnGroupAdicionais.clearSelection();
         this.txtArea.setText("");
+        this.unir.delete(0, unir.length());
+        this.desc = 0;
+
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void txtPrezoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrezoKeyTyped
@@ -239,7 +314,7 @@ public class Tarefa6 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAreaKeyPressed
 
     private void txtAreaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAreaMouseClicked
-        
+
 
     }//GEN-LAST:event_txtAreaMouseClicked
 
@@ -258,6 +333,18 @@ public class Tarefa6 extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         System.exit(0);
     }//GEN-LAST:event_formWindowClosed
+
+    private void txtPrezoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrezoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrezoActionPerformed
+
+    private void txtPezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPezaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPezaActionPerformed
+
+    private void rbtSinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtSinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtSinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,11 +388,11 @@ public class Tarefa6 extends javax.swing.JFrame {
     private javax.swing.JButton btnNovo;
     private javax.swing.JCheckBox chClientePremium;
     private javax.swing.JCheckBox chEmpregado;
-    private javax.swing.JLabel lblDescAdic;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblPeza;
     private javax.swing.JLabel lblPrezo;
-    private javax.swing.JLabel lblResultado;
-    private javax.swing.JLabel lblUnidadesAdq;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JRadioButton rbt15;
     private javax.swing.JRadioButton rbt5;
