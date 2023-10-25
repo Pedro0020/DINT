@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package BBDD;
+package ud1.compoñentesgraficos.resumencomponentes;
 
 /**
  *
@@ -13,13 +13,13 @@ package BBDD;
 
 import java.util.ArrayList;
 
-public class BD {
+public class BBDD {
     private ArrayList<Cliente> clientes;
     private ArrayList<Articulo> articulos;
     private ArrayList<Venta> ventas;
     private int indiceActual;
 
-    public BD() {
+    public BBDD() {
         clientes = new ArrayList<>();
         // Puedes agregar datos iniciales si lo deseas
         clientes.add(new Cliente("111", "Jose Luis", "Marín","986554433"));
