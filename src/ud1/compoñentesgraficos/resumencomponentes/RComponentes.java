@@ -171,6 +171,11 @@ public class RComponentes extends javax.swing.JFrame {
         });
 
         jButtonBorrar1Cliente.setText("Borrar 1 Cliente");
+        jButtonBorrar1Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrar1ClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBotonesCentroLayout = new javax.swing.GroupLayout(jPanelBotonesCentro);
         jPanelBotonesCentro.setLayout(jPanelBotonesCentroLayout);
@@ -288,7 +293,7 @@ public class RComponentes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptar3ActionPerformed
 
     private void jButtonAceptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptar2ActionPerformed
-        if (jList1.getSelectedIndex() == -1) {
+        if (jList1.getSelectedIndex() == 0) {
             jLabel2.setText("Ninguna provincia seleccionada");
         } else {
             StringBuilder s = new StringBuilder();
@@ -302,6 +307,14 @@ public class RComponentes extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonAceptar2ActionPerformed
+
+    private void jButtonBorrar1ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrar1ClienteActionPerformed
+        int indice = jList2.getSelectedIndex();
+        if (indice > -1) {
+            modeloClientes.remove(indice);
+        }
+
+    }//GEN-LAST:event_jButtonBorrar1ClienteActionPerformed
 
     /**
      * @param args the command line arguments

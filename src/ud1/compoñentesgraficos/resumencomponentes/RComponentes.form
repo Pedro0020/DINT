@@ -295,6 +295,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Borrar 1 Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBorrar1ClienteActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
