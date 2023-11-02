@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ud1.compoñentesgraficos.resumencomponentes;
+package ud1.compoñentesgraficos;
 
 /**
  *
  * @author node
- */
+    */
 public class Cliente {
+
     String Dni;
     String Nombre;
     String Direccion;
     String Telefono;
-    
 
     public Cliente(String Dni, String Nombre, String Direccion, String Telefono) {
         this.Dni = Dni;
@@ -57,10 +57,7 @@ public class Cliente {
     @Override
     public String toString() {
         //return "Cliente{" + "Dni=" + Dni + ", Nombre=" + Nombre + ", Direccion=" + Direccion + ", Telefono=" + Telefono + '}';
-        return  Dni + " "  + Nombre ;
+        return Dni + " " + Nombre;
     }
-    
-    
-    
-    
+
 }

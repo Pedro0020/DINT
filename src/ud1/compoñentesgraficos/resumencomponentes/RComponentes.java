@@ -1,5 +1,6 @@
 package ud1.compoñentesgraficos.resumencomponentes;
 
+import ud1.compoñentesgraficos.*;
 import javax.swing.DefaultListModel;
 
 /*
@@ -56,11 +57,12 @@ public class RComponentes extends javax.swing.JFrame {
         jLabelDNI = new javax.swing.JLabel();
         jTextFieldDNI = new javax.swing.JTextField();
         jLabelNombre = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        textNombre = new javax.swing.JTextField();
         jLabelDireccion = new javax.swing.JLabel();
         jTextFieldDireccion = new javax.swing.JTextField();
         jLabelTelefono = new javax.swing.JLabel();
         jTextFieldTelefono = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +77,7 @@ public class RComponentes extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListSingle.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jListSingle);
 
         jLabelMultiple.setText("SelectionModel = Multiple (Un JComboBox no tiene selección multiple)");
@@ -252,7 +255,13 @@ public class RComponentes extends javax.swing.JFrame {
 
         jLabelNombre.setText("Nombre");
         jPanelSur.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-        jPanelSur.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 180, -1));
+
+        textNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNombreActionPerformed(evt);
+            }
+        });
+        jPanelSur.add(textNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 180, -1));
 
         jLabelDireccion.setText("Dirección");
         jPanelSur.add(jLabelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
@@ -261,6 +270,14 @@ public class RComponentes extends javax.swing.JFrame {
         jLabelTelefono.setText("Teléfono");
         jPanelSur.add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
         jPanelSur.add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 110, -1));
+
+        jButton1.setText("Añadir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanelSur.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
         getContentPane().add(jPanelSur, java.awt.BorderLayout.PAGE_END);
 
@@ -310,11 +327,32 @@ public class RComponentes extends javax.swing.JFrame {
 
     private void jButtonBorrar1ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrar1ClienteActionPerformed
         int indice = jList2.getSelectedIndex();
+        
+        
         if (indice > -1) {
+           Cliente  cliente=(Cliente) modeloClientes.get(indice);
+            basedatos.eliminarCliente(cliente.getDni());
             modeloClientes.remove(indice);
         }
 
     }//GEN-LAST:event_jButtonBorrar1ClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Cliente cliente =null;
+        if (jTextFieldDNI.contains(0, jTextFieldDNI.getText().length() - 1)
+                && textNombre.contains(0, textNombre.getText().length() - 1)
+                && jTextFieldDireccion.contains(0, jTextFieldDireccion.getText().length() - 1)
+                && jTextFieldTelefono.contains(0, jTextFieldTelefono.getText().length() - 1)) {
+            cliente =new Cliente(jTextFieldDNI.getText(), textNombre.getText(), jTextFieldDireccion.getText(), jTextFieldTelefono.getText());
+            basedatos.agregarCliente(cliente);
+            modeloClientes.addElement(cliente);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,6 +390,7 @@ public class RComponentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAceptar2;
     private javax.swing.JButton jButtonAceptar3;
     private javax.swing.JButton jButtonBorrar1Cliente;
@@ -375,9 +414,9 @@ public class RComponentes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneMultiple;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldDireccion;
     private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JTextField textNombre;
     // End of variables declaration//GEN-END:variables
 }

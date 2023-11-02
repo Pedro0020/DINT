@@ -2,48 +2,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ud1.compoñentesgraficos.resumencomponentes;
+package ud1.compoñentesgraficos;
 
 /**
  *
  * @author node
  */
-public class Articulo {
+public class Venta {
     String Codigo;
-    String Articulo;
-    String Unidad;
+    String Fecha;
+    String CodCli;
+    String CodArt;
     int Cantidad;
     int Precio;
     int Importe;
     
 
-    public Articulo(String Codigo, String Articulo, String Unidad, int Cantidad, int Precio) {
+    public Venta(String Codigo, String Fecha, String CodCli, String CodArt, int Cantidad, int Precio) {
         this.Codigo = Codigo;
-        this.Articulo = Articulo;
-        this.Unidad = Unidad;
+        this.Fecha = Fecha;
+        this.CodCli = CodCli;
+        this.CodArt= CodArt;
         this.Cantidad = Cantidad;
         this.Precio = Precio;
         this.Importe = Cantidad * Precio;
-    }
-
-    public int getImporte() {
-        return Importe;
-    }
-
-    public void setImporte(int Importe) {
-        this.Importe = Importe;
     }
 
     public void setCodigo(String Codigo) {
         this.Codigo = Codigo;
     }
 
-    public void setArticulo(String Articulo) {
-        this.Articulo = Articulo;
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
     }
 
-    public void setUnidad(String Unidad) {
-        this.Unidad = Unidad;
+    public void setCodCli(String CodCli) {
+        this.CodCli = CodCli;
+    }
+
+    public void setCodArt(String CodArt) {
+        this.CodArt = CodArt;
     }
 
     public void setCantidad(int Cantidad) {
@@ -54,16 +52,24 @@ public class Articulo {
         this.Precio = Precio;
     }
 
+    public void setImporte(int Importe) {
+        this.Importe = Importe;
+    }
+
     public String getCodigo() {
         return Codigo;
     }
 
-    public String getArticulo() {
-        return Articulo;
+    public String getFecha() {
+        return Fecha;
     }
 
-    public String getUnidad() {
-        return Unidad;
+    public String getCodCli() {
+        return CodCli;
+    }
+
+    public String getCodArt() {
+        return CodArt;
     }
 
     public int getCantidad() {
@@ -74,13 +80,18 @@ public class Articulo {
         return Precio;
     }
 
+    public int getImporte() {
+        return Importe;
+    }
+ 
+
    
   
 
     @Override
     public String toString() {
         //return "Cliente{" + "Dni=" + Dni + ", Nombre=" + Nombre + ", Direccion=" + Direccion + ", Telefono=" + Telefono + '}';
-        return  Codigo + " : "  + Articulo ;
+        return  Codigo  ;
     }
     
     
