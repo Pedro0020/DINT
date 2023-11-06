@@ -24,6 +24,7 @@ public class RComponentes extends javax.swing.JFrame {
         basedatos = new BBDD();
         modeloClientes = new DefaultListModel();
         jList2.setModel(modeloClientes);
+        
     }
 
     /**
