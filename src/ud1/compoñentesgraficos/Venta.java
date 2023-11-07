@@ -4,6 +4,8 @@
  */
 package ud1.compoñentesgraficos;
 
+import java.util.Objects;
+
 /**
  *
  * @author node
@@ -83,10 +85,6 @@ public class Venta {
     public int getImporte() {
         return Importe;
     }
- 
-
-   
-  
 
     @Override
     public String toString() {
