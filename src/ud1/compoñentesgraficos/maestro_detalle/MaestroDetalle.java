@@ -90,9 +90,19 @@ public class MaestroDetalle extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 570));
 
         jPanel5.setPreferredSize(new java.awt.Dimension(587, 165));
 
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
         jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable4MouseClicked(evt);
@@ -338,13 +348,17 @@ public class MaestroDetalle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarVentaSelecionadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaSelecionadaActionPerformed
-        this.modeloVentas.removeRow(this.jTable5.getSelectedRow());
-        this.textCodigo.setText("");
-        this.textFecha.setText("");
-        this.textCantidad.setText("");
-        this.textPrecio.setText("");
-        this.txtCodigoCliente.setText("");
-        this.txtNombreCliente.setText("");
+
+        if (jTable5.getSelectedRow() > -1) {
+            this.modeloVentas.removeRow(this.jTable5.getSelectedRow());
+
+            this.textCodigo.setText("");
+            this.textFecha.setText("");
+            this.textCantidad.setText("");
+            this.textPrecio.setText("");
+            this.txtCodigoCliente.setText("");
+            this.txtNombreCliente.setText("");
+        }
     }//GEN-LAST:event_btnEliminarVentaSelecionadaActionPerformed
 
     private void textCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCodigoActionPerformed
@@ -361,8 +375,8 @@ public class MaestroDetalle extends javax.swing.JFrame {
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
         this.lMod2.setText((this.jTable4.getValueAt(jTable4.getSelectedRow(), 0)
                 + ", " + this.jTable4.getValueAt(jTable4.getSelectedRow(), 1)));
-        this.lbMod1.setText(jTable5.getRowCount()+"");
-       this.modeloVentas.setRowCount(0);
+        this.lbMod1.setText(jTable5.getRowCount() + "");
+        this.modeloVentas.setRowCount(0);
         actualizarTabla5();
     }//GEN-LAST:event_jTable4MouseClicked
 
@@ -409,7 +423,8 @@ public class MaestroDetalle extends javax.swing.JFrame {
         boolean cont = true;
         if (!txtCodigoCliente.getText().isEmpty() && !txtNombreCliente.getText().isEmpty()
                 && !textCantidad.getText().isEmpty() && !textCodigo.getText().isEmpty()
-                && !textFecha.getText().isEmpty() && !textPrecio.getText().isEmpty()) {
+                && !textFecha.getText().isEmpty() && !textPrecio.getText().isEmpty()
+                && jTable4.getSelectedRow() > -1) {
 
             Venta v = new Venta(textCodigo.getText(),
                     textFecha.getText(),
