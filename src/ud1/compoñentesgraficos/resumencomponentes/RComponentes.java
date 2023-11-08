@@ -1,6 +1,7 @@
 package ud1.compoñentesgraficos.resumencomponentes;
 
-import ud1.compoñentesgraficos.*;
+import ud1.Cliente;
+import ud1.BBDD;
 import javax.swing.DefaultListModel;
 
 /*

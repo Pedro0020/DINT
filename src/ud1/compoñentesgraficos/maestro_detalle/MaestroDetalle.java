@@ -6,9 +6,9 @@ package ud1.compoñentesgraficos.maestro_detalle;
 
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
-import ud1.compoñentesgraficos.Articulo;
-import ud1.compoñentesgraficos.BBDD;
-import ud1.compoñentesgraficos.Venta;
+import ud1.Articulo;
+import ud1.BBDD;
+import ud1.Venta;
 
 /**
  *

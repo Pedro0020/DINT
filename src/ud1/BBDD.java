@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ud1.compoñentesgraficos;
+package ud1;
 
 /**
  *
@@ -94,6 +94,14 @@ public class BBDD {
             }
         }
         return null; // Retornar null si no se encuentra el registro
+    }
+    public boolean comprobarExistenciaArticulo(String Codigo) {
+        for (Articulo registro : articulos) {
+            if (registro.getCodigo().equals(Codigo)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Venta obtenerVentaPorCodigo(String Codigo) {
