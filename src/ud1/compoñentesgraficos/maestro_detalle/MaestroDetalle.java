@@ -4,7 +4,6 @@
  */
 package ud1.compoñentesgraficos.maestro_detalle;
 
-import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import ud1.Articulo;
 import ud1.BBDD;
@@ -351,7 +350,6 @@ public class MaestroDetalle extends javax.swing.JFrame {
 
         if (jTable5.getSelectedRow() > -1) {
             this.modeloVentas.removeRow(this.jTable5.getSelectedRow());
-
             this.textCodigo.setText("");
             this.textFecha.setText("");
             this.textCantidad.setText("");
