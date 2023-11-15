@@ -4,7 +4,7 @@
  */
 package ud1.menusxanelas.aplicacionmdi;
 
-import java.util.ArrayList;
+import ud1.Articulo;
 import ud1.BBDD;
 
 /**
@@ -16,6 +16,9 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     public static final String NOMBRE_BOTON_INSERTAR = "Alta Articulo";
     public static final String NOMBRE_BOTON_ACTUALIZAR = "Actualizar Articulo";
     private BBDD datos;
+    int pos;
+    public static final int NUM_MOD = 110;
+    public static final int NUM_INS = 100;
 
     /**
      * Creates new form VentanaProductos
@@ -23,6 +26,8 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     public VentanaProductos() {
         initComponents();
         deshabilitarIntroducirDatos();
+        pos = 0;
+        datos = new BBDD();
     }
 
     /**
@@ -43,12 +48,18 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        comboUnidades = new javax.swing.JComboBox<>();
         txtImporte = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
+        txtUnidades = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel1.setText("Codigo Producto");
 
@@ -56,6 +67,16 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         txtCodigoProducto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCodigoProductoFocusLost(evt);
+            }
+        });
+        txtCodigoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoProductoActionPerformed(evt);
+            }
+        });
+        txtCodigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoProductoKeyTyped(evt);
             }
         });
 
@@ -73,8 +94,6 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Importe");
 
-        comboUnidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kilo", "Litro", "Saco", "Unidad", "Docena" }));
-
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
@@ -86,6 +105,8 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                 txtPrecioFocusLost(evt);
             }
         });
+
+        txtUnidades.setPreferredSize(new java.awt.Dimension(100, 23));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,13 +120,13 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtNomArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboUnidades, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtCantidad)
-                        .addComponent(txtPrecio))
+                        .addComponent(txtPrecio)
+                        .addComponent(txtUnidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
@@ -118,9 +139,9 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                     .addComponent(txtNomArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -149,6 +170,13 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton3.setText("OK");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,18 +184,20 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(65, 65, 65)
                 .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(61, 61, 61)
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +205,8 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -189,23 +220,14 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodigoProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoProductoFocusLost
-        if (!this.txtCodigoProducto.getText().isEmpty()) {
-            if (this.datos.comprobarExistenciaArticulo(txtCodigoProducto.getText())) {
-                habilitarIntroducirDatos();
-                this.txtCodigoProducto.setText(NOMBRE_BOTON_ACTUALIZAR);
-            } else {
-                habilitarIntroducirDatos();
-                this.txtCodigoProducto.setText(NOMBRE_BOTON_INSERTAR);
-            }
 
-        }
     }//GEN-LAST:event_txtCodigoProductoFocusLost
     private void deshabilitarIntroducirDatos() {
         this.txtCantidad.setEnabled(false);
         this.txtPrecio.setEnabled(false);
         this.txtImporte.setEnabled(false);
         this.txtNomArticulo.setEnabled(false);
-        this.comboUnidades.setEnabled(false);
+        this.txtUnidades.setEnabled(false);
     }
 
     private void habilitarIntroducirDatos() {
@@ -213,7 +235,7 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         this.txtImporte.setEnabled(true);
         this.txtPrecio.setEnabled(true);
         this.txtNomArticulo.setEnabled(true);
-        this.comboUnidades.setEnabled(true);
+        this.txtUnidades.setEnabled(true);
     }
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         if (!this.txtCantidad.getText().isEmpty() && !this.txtPrecio.getText().isEmpty()) {
@@ -223,29 +245,76 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
 
     private void txtPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioFocusLost
         if (!this.txtCantidad.getText().isEmpty() && !this.txtPrecio.getText().isEmpty()) {
-            this.txtImporte.setText((Integer.parseInt(this.txtCantidad.getText()) + Integer.parseInt(this.txtPrecio.getText())) + "");
+            this.txtImporte.setText(calcularImporte() + "");
         }
     }//GEN-LAST:event_txtPrecioFocusLost
-
+    public int calcularImporte() {
+        return (Integer.parseInt(this.txtCantidad.getText()) + Integer.parseInt(this.txtPrecio.getText()));
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        switch (this.) {
-//            case val:
-//
-//                break;
-//            default:
-//                throw new AssertionError();
-//        }
+        Articulo articulo = new Articulo(txtCodigoProducto.getText(),
+                txtNomArticulo.getText(), txtUnidades.getText(),
+                Integer.parseInt(txtCantidad.getText()),
+                Integer.parseInt(txtPrecio.getText()));
+        switch (this.pos) {
+            case NUM_INS:
+                this.datos.agregarArticulo(articulo);
+                break;
+            case NUM_MOD:
+                this.datos.actualizarArticulo(txtCodigoProducto.getText(),
+                        articulo);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoProductoActionPerformed
+
+    private void txtCodigoProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProductoKeyTyped
+        if (this.txtCodigoProducto.getText().isEmpty()) {
+            deshabilitarIntroducirDatos();
+            limpiarDatos();
+        }
+    }//GEN-LAST:event_txtCodigoProductoKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (!this.txtCodigoProducto.getText().isEmpty()) {
+            if (this.datos.comprobarExistenciaArticulo(txtCodigoProducto.getText())) {
+                habilitarIntroducirDatos();
+                this.jButton1.setText(NOMBRE_BOTON_ACTUALIZAR);
+                this.pos = NUM_MOD;
+                ordenarDatos(this.datos.obtenerArticuloPorCodigo(txtCodigoProducto.getText()));
+
+            } else {
+                habilitarIntroducirDatos();
+                this.jButton1.setText(NOMBRE_BOTON_INSERTAR);
+                this.pos = NUM_INS;
+            }
+
+        } else {
+            deshabilitarIntroducirDatos();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+    public void ordenarDatos(Articulo art) {
+        this.txtCantidad.setText(art.getCantidad() + "");
+        this.txtPrecio.setText(art.getPrecio() + "");
+        this.txtNomArticulo.setText(art.getArticulo() + "");
+        this.txtUnidades.setText(art.getUnidad() + "");
+        this.txtImporte.setText(calcularImporte() + "");
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboUnidades;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -258,5 +327,14 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtImporte;
     private javax.swing.JTextField txtNomArticulo;
     private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtUnidades;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarDatos() {
+        this.txtCantidad.setText("");
+        this.txtPrecio.setText("");
+        this.txtNomArticulo.setText("");
+        this.txtUnidades.setText("");
+        this.txtImporte.setText("");
+    }
 }

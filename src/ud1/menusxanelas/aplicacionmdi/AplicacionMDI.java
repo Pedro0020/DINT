@@ -10,11 +10,16 @@ package ud1.menusxanelas.aplicacionmdi;
  */
 public class AplicacionMDI extends javax.swing.JFrame {
 
+    private VentanaProductos ventanaProductos;
+    private VentanaClientes ventanaClientes;
+
     /**
      * Creates new form AplicacionMDI
      */
     public AplicacionMDI() {
         initComponents();
+        ventanaProductos = null;
+        ventanaClientes=null;
     }
 
     /**
@@ -40,11 +45,11 @@ public class AplicacionMDI extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 526, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGap(0, 381, Short.MAX_VALUE)
         );
 
         getContentPane().add(escritorio, java.awt.BorderLayout.CENTER);
@@ -87,15 +92,19 @@ public class AplicacionMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuClientesMenuSelected
 
     private void menuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClientesMouseClicked
-        VentanaProductos ventanaProductos = new VentanaProductos();
-        this.escritorio.add(ventanaProductos);
-        ventanaProductos.show();
+        if (ventanaClientes == null || !ventanaClientes.isVisible()) {
+            ventanaClientes = new VentanaClientes();
+            this.escritorio.add(ventanaClientes);
+            ventanaClientes.show();
+        }
     }//GEN-LAST:event_menuClientesMouseClicked
 
     private void menuProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProductosMouseClicked
-        VentanaProductos ventanaProductos = new VentanaProductos();
-        this.escritorio.add(ventanaProductos);
-        ventanaProductos.show();
+        if (ventanaProductos == null || !ventanaProductos.isVisible()) {
+            ventanaProductos = new VentanaProductos();
+            this.escritorio.add(ventanaProductos);
+            ventanaProductos.show();
+        }
     }//GEN-LAST:event_menuProductosMouseClicked
 
     /**
