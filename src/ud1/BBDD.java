@@ -103,6 +103,14 @@ public class BBDD {
         }
         return false;
     }
+    public boolean comprobarExistenciaCliente(String dni) {
+        for (Cliente cliente :clientes) {
+            if (cliente.getDni().equals(dni)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Venta obtenerVentaPorCodigo(String Codigo) {
         for (Venta registro : ventas) {
