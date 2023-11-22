@@ -4,11 +4,8 @@
  */
 package ud1.menusxanelas.aplicacionmdi;
 
-import com.mysql.cj.xdevapi.Table;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import ud1.BBDD;
 import ud1.Cliente;
 
@@ -20,12 +17,14 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
 
     private BBDD datos;
     private DefaultTableModel modelo;
+    private VentanaClientes v;
 
     /**
      * Creates new form VentanaProductosTabla
      */
-    public VentanaClientesTabla(BBDD datos) {
+    public VentanaClientesTabla(BBDD datos, VentanaClientes v) {
         this.datos = datos;
+        this.v = v;
         ArrayList<Cliente> data = this.datos.obtenerClientes();
         String[] columnNames = {"DNI", "Nombre", "Dirección", "Teléfono"};
         this.modelo = new DefaultTableModel();
@@ -57,6 +56,16 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jTable1.setModel(this.modelo);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -78,6 +87,16 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        String dni = (String) this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0);
+        this.v.datos(dni);
+        dispose();
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

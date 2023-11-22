@@ -21,18 +21,21 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     public static final int NUM_MOD = 110;
     public static final int NUM_INS = 100;
     private VentanaProductosTabla tablaProductos;
-    private JDesktopPane escritorio;
+    private final JDesktopPane escritorio;
 
     /**
      * Creates new form VentanaProductos
+     *
+     * @param escritorio
+     * @param datos
      */
-    public VentanaProductos(JDesktopPane escritorio) {
+    public VentanaProductos(JDesktopPane escritorio, BBDD datos) {
         initComponents();
         deshabilitarIntroducirDatos();
         tablaProductos = null;
         pos = 0;
         this.escritorio = escritorio;
-        datos = new BBDD();
+        this.datos = datos;
     }
 
     /**
@@ -52,8 +55,6 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtImporte = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtUnidades = new javax.swing.JTextField();
@@ -81,6 +82,9 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
             }
         });
         txtCodigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodigoProductoKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoProductoKeyTyped(evt);
             }
@@ -98,17 +102,25 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Precio");
 
-        jLabel6.setText("Importe");
-
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
+            }
+        });
+        txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCantidadKeyPressed(evt);
             }
         });
 
         txtPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPrecioFocusLost(evt);
+            }
+        });
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyPressed(evt);
             }
         });
 
@@ -124,16 +136,13 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNomArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCantidad)
-                        .addComponent(txtPrecio)
-                        .addComponent(txtUnidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNomArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCantidad)
+                    .addComponent(txtPrecio)
+                    .addComponent(txtUnidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -147,7 +156,7 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -155,11 +164,7 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                .addGap(53, 53, 53))
         );
 
         jButton1.setText("Alta Articulo");
@@ -195,25 +200,23 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1)
+                        .addGap(69, 69, 69)
+                        .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(69, 69, 69)
-                                .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton1)))))
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton1)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -222,20 +225,20 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCodigoProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
-                        .addComponent(jToggleButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jToggleButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -251,32 +254,26 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     private void deshabilitarIntroducirDatos() {
         this.txtCantidad.setEnabled(false);
         this.txtPrecio.setEnabled(false);
-        this.txtImporte.setEnabled(false);
         this.txtNomArticulo.setEnabled(false);
         this.txtUnidades.setEnabled(false);
     }
 
     private void habilitarIntroducirDatos() {
         this.txtCantidad.setEnabled(true);
-        this.txtImporte.setEnabled(true);
         this.txtPrecio.setEnabled(true);
         this.txtNomArticulo.setEnabled(true);
         this.txtUnidades.setEnabled(true);
     }
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
-        if (!this.txtCantidad.getText().isEmpty() && !this.txtPrecio.getText().isEmpty()) {
-            this.txtImporte.setText((Integer.parseInt(this.txtCantidad.getText()) + Integer.parseInt(this.txtPrecio.getText())) + "");
-        }
+
     }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void txtPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioFocusLost
-        if (!this.txtCantidad.getText().isEmpty() && !this.txtPrecio.getText().isEmpty()) {
-            this.txtImporte.setText(calcularImporte() + "");
-        }
+
     }//GEN-LAST:event_txtPrecioFocusLost
-    public int calcularImporte() {
-        return (Integer.parseInt(this.txtCantidad.getText()) + Integer.parseInt(this.txtPrecio.getText()));
-    }
+//    public String calcularImporte() {
+//        return ((Integer.parseInt(this.txtCantidad.getText()) * Integer.parseInt(this.txtPrecio.getText())) + "");
+//    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Articulo articulo = new Articulo(txtCodigoProducto.getText(),
                 txtNomArticulo.getText(), txtUnidades.getText(),
@@ -285,6 +282,8 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         switch (this.pos) {
             case NUM_INS:
                 this.datos.agregarArticulo(articulo);
+                limpiarDatos();
+                deshabilitarIntroducirDatos();
                 break;
             case NUM_MOD:
                 this.datos.actualizarArticulo(txtCodigoProducto.getText(),
@@ -304,13 +303,17 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodigoProductoActionPerformed
 
     private void txtCodigoProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProductoKeyTyped
-        if (this.txtCodigoProducto.getText().isEmpty()) {
-            deshabilitarIntroducirDatos();
-            limpiarDatos();
-        }
+
+        deshabilitarIntroducirDatos();
+        limpiarDatos();
+
     }//GEN-LAST:event_txtCodigoProductoKeyTyped
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        tomarDecision();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tomarDecision() {
         if (!this.txtCodigoProducto.getText().isEmpty()) {
             if (this.datos.comprobarExistenciaArticulo(txtCodigoProducto.getText())) {
                 habilitarIntroducirDatos();
@@ -327,23 +330,37 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         } else {
             deshabilitarIntroducirDatos();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (tablaProductos == null || !tablaProductos.isVisible()) {
-            tablaProductos = new VentanaProductosTabla(this.datos);
+            tablaProductos = new VentanaProductosTabla(this.datos, this);
             escritorio.add(tablaProductos);
             tablaProductos.show();
         }    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void txtCodigoProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProductoKeyPressed
+
+    }//GEN-LAST:event_txtCodigoProductoKeyPressed
+
+    private void txtCantidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyPressed
+
+    }//GEN-LAST:event_txtCantidadKeyPressed
+
+    private void txtPrecioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyPressed
+
+    }//GEN-LAST:event_txtPrecioKeyPressed
     public void ordenarDatos(Articulo art) {
         this.txtCantidad.setText(art.getCantidad() + "");
         this.txtPrecio.setText(art.getPrecio() + "");
         this.txtNomArticulo.setText(art.getArticulo() + "");
         this.txtUnidades.setText(art.getUnidad() + "");
-        this.txtImporte.setText(calcularImporte() + "");
-
     }
 
+    protected void datos(String c) {
+        this.txtCodigoProducto.setText(c);
+        tomarDecision();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -353,12 +370,10 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigoProducto;
-    private javax.swing.JTextField txtImporte;
     private javax.swing.JTextField txtNomArticulo;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtUnidades;
@@ -369,6 +384,5 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
         this.txtPrecio.setText("");
         this.txtNomArticulo.setText("");
         this.txtUnidades.setText("");
-        this.txtImporte.setText("");
     }
 }

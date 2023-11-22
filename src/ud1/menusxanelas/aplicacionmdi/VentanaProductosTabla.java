@@ -22,12 +22,14 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
 
     private BBDD datos;
     private DefaultTableModel modelo;
+    private VentanaProductos p;
 
     /**
      * Creates new form VentanaProductosTabla
      */
-    public VentanaProductosTabla(BBDD datos) {
+    public VentanaProductosTabla(BBDD datos, VentanaProductos p) {
         this.datos = datos;
+        this.p = p;
         ArrayList<Articulo> data = this.datos.obtenerArticulos();
         String[] columnNames = {"Codigo", "Articulo", "Unidad", "Cantidad", "Precio",
             "Importe"};
@@ -61,6 +63,11 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
         setResizable(true);
 
         jTable1.setModel(this.modelo);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,6 +89,12 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        String datos = (String) this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0);
+        this.p.datos(datos);
+        dispose();
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

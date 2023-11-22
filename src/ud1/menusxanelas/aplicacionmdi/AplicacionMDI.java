@@ -4,12 +4,15 @@
  */
 package ud1.menusxanelas.aplicacionmdi;
 
+import ud1.BBDD;
+
 /**
  *
  * @author neo
  */
 public class AplicacionMDI extends javax.swing.JFrame {
 
+    private BBDD datos;
     private VentanaProductos ventanaProductos;
     private VentanaClientes ventanaClientes;
 
@@ -18,6 +21,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
      */
     public AplicacionMDI() {
         initComponents();
+        datos = new BBDD();
         ventanaProductos = null;
         ventanaClientes = null;
     }
@@ -93,7 +97,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
     private void menuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClientesMouseClicked
         if (ventanaClientes == null || !ventanaClientes.isVisible()) {
-            ventanaClientes = new VentanaClientes(this.escritorio);
+            ventanaClientes = new VentanaClientes(this.escritorio, this.datos);
             this.escritorio.add(ventanaClientes);
             ventanaClientes.show();
         }
@@ -101,7 +105,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
     private void menuProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProductosMouseClicked
         if (ventanaProductos == null || !ventanaProductos.isVisible()) {
-            ventanaProductos = new VentanaProductos(this.escritorio);
+            ventanaProductos = new VentanaProductos(this.escritorio, this.datos);
             this.escritorio.add(ventanaProductos);
             ventanaProductos.show();
         }

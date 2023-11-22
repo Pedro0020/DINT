@@ -26,9 +26,9 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaClientes
      */
-    public VentanaClientes(JDesktopPane escritorio) {
+    public VentanaClientes(JDesktopPane escritorio, BBDD datos) {
         initComponents();
-        this.datos = new BBDD();
+        this.datos = datos;
         this.escritorio = escritorio;
         pos = 0;
         tablaClientes = null;
@@ -78,6 +78,9 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
             }
         });
         txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDniKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDniKeyTyped(evt);
             }
@@ -214,7 +217,7 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
                         .addGap(84, 84, 84)
                         .addComponent(jToggleButton1)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -246,6 +249,8 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
         switch (this.pos) {
             case NUM_INS:
                 this.datos.agregarCliente(cliente);
+                limpiarDatos();
+                deshabilitarIntroducirDatos();
                 break;
             case NUM_MOD:
                 this.datos.actualizarCliente(this.txtDni.getText(),
@@ -261,6 +266,10 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        tomarDecision();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tomarDecision() {
         if (!this.txtDni.getText().isEmpty()) {
             if (this.datos.comprobarExistenciaCliente(txtDni.getText())) {
                 habilitarIntroducirDatos();
@@ -277,7 +286,8 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
         } else {
             deshabilitarIntroducirDatos();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }
+
     private void deshabilitarIntroducirDatos() {
         this.txtNombreCliente.setEnabled(false);
         this.txtDireccion.setEnabled(false);
@@ -290,7 +300,7 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
         this.txtTelefono.setEnabled(true);
     }
 
-    public void ordenarDatos(Cliente cli) {
+    private void ordenarDatos(Cliente cli) {
         this.txtNombreCliente.setText(cli.getNombre());
         this.txtDireccion.setText(cli.getDireccion());
         this.txtTelefono.setText(cli.getTelefono());
@@ -302,12 +312,22 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (tablaClientes == null || !tablaClientes.isVisible()) {
-            tablaClientes = new VentanaClientesTabla(this.datos);
+            tablaClientes = new VentanaClientesTabla(this.datos, this);
             escritorio.add(tablaClientes);
             tablaClientes.show();
         }    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
+        deshabilitarIntroducirDatos();
+        limpiarDatos();
 
+
+    }//GEN-LAST:event_txtDniKeyPressed
+
+    protected void datos(String c) {
+        this.txtDni.setText(c);
+        tomarDecision();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
