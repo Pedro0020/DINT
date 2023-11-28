@@ -4,15 +4,10 @@
  */
 package ud1.menusxanelas.aplicacionmdi;
 
-import com.mysql.cj.xdevapi.Table;
 import java.util.ArrayList;
-import java.util.Arrays;
-import javax.crypto.AEADBadTagException;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import ud1.Articulo;
 import ud1.BBDD;
-import ud1.Cliente;
 
 /**
  *
@@ -22,12 +17,15 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
 
     private BBDD datos;
     private DefaultTableModel modelo;
-    private VentanaProductos p;
+    private javax.swing.JInternalFrame p;
 
     /**
      * Creates new form VentanaProductosTabla
+     *
+     * @param datos
+     * @param p
      */
-    public VentanaProductosTabla(BBDD datos, VentanaProductos p) {
+    public VentanaProductosTabla(BBDD datos, javax.swing.JInternalFrame p) {
         this.datos = datos;
         this.p = p;
         ArrayList<Articulo> data = this.datos.obtenerArticulos();
@@ -91,8 +89,12 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        String datos = (String) this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0);
-        this.p.datos(datos);
+        String codigo = (String) this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0);
+        if (this.p instanceof VentanaProductos ventanaProductos) {
+            ventanaProductos.datos(codigo);
+        } else if (this.p instanceof VentanaVentasMod ventanaVentasMod) {
+            ventanaVentasMod.datosProduto(codigo);
+        }
         dispose();
     }//GEN-LAST:event_jTable1MouseClicked
 

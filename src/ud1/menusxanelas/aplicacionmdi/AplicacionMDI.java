@@ -15,7 +15,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
     private BBDD datos;
     private VentanaProductos ventanaProductos;
     private VentanaClientes ventanaClientes;
-    private VentanaVentasInsertar ventanaInsertar;
+    private VentanaVentasMod ventanaInsertar;
 
     /**
      * Creates new form AplicacionMDI
@@ -23,6 +23,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
     public AplicacionMDI() {
         initComponents();
         datos = new BBDD();
+        ventanaInsertar = null;
         ventanaProductos = null;
         ventanaClientes = null;
     }
@@ -85,12 +86,17 @@ public class AplicacionMDI extends javax.swing.JFrame {
         });
         jMenuBar1.add(menuClientes);
 
-        jMenu1.setText("ortro");
+        jMenu1.setText("Ventas");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Insertar");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem1);
@@ -123,12 +129,21 @@ public class AplicacionMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuProductosMouseClicked
 
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
-            ventanaInsertar = new VentanaVentasInsertar(this.escritorio, this.datos);
+        if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
+            ventanaInsertar = new VentanaVentasMod(this.escritorio, this.datos);
             this.escritorio.add(ventanaInsertar);
             ventanaInsertar.show();
-        }            
+        }
     }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.out.println("AQUIE ENTRO");
+        if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
+            ventanaInsertar = new VentanaVentasMod(this.escritorio, this.datos);
+            this.escritorio.add(ventanaInsertar);
+            ventanaInsertar.show();
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,10 +173,8 @@ if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AplicacionMDI().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AplicacionMDI().setVisible(true);
         });
     }
 

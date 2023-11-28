@@ -95,6 +95,7 @@ public class BBDD {
         }
         return null; // Retornar null si no se encuentra el registro
     }
+
     public boolean comprobarExistenciaArticulo(String Codigo) {
         for (Articulo registro : articulos) {
             if (registro.getCodigo().equals(Codigo)) {
@@ -103,9 +104,19 @@ public class BBDD {
         }
         return false;
     }
+
     public boolean comprobarExistenciaCliente(String dni) {
-        for (Cliente cliente :clientes) {
+        for (Cliente cliente : clientes) {
             if (cliente.getDni().equals(dni)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean comprobarExistenciaVenta(String codigo) {
+        for (Venta venta : ventas) {
+            if (venta.getCodigo().equals(codigo)) {
                 return true;
             }
         }
@@ -236,6 +247,5 @@ public class BBDD {
             return null;
         }
     }
-    
 
 }

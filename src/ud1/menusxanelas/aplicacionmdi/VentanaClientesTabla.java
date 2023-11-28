@@ -17,12 +17,12 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
 
     private BBDD datos;
     private DefaultTableModel modelo;
-    private VentanaClientes v;
+    private javax.swing.JInternalFrame v;
 
     /**
      * Creates new form VentanaProductosTabla
      */
-    public VentanaClientesTabla(BBDD datos, VentanaClientes v) {
+    public VentanaClientesTabla(BBDD datos, javax.swing.JInternalFrame v) {
         this.datos = datos;
         this.v = v;
         ArrayList<Cliente> data = this.datos.obtenerClientes();
@@ -93,8 +93,12 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable1KeyPressed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        String dni = (String) this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0);
-        this.v.datos(dni);
+        String codigo = (String) this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 0);
+        if (this.v instanceof VentanaClientes ventanaClientes) {
+            ventanaClientes.datos(codigo);
+        } else if (this.v instanceof VentanaVentasMod ventanaVentasMod) {
+            ventanaVentasMod.datosCliente(codigo);
+        }
         dispose();
     }//GEN-LAST:event_jTable1MouseClicked
 
