@@ -15,6 +15,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
     private BBDD datos;
     private VentanaProductos ventanaProductos;
     private VentanaClientes ventanaClientes;
+    private VentanaVentasInsertar ventanaInsertar;
 
     /**
      * Creates new form AplicacionMDI
@@ -40,6 +41,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
         menuProductos = new javax.swing.JMenu();
         menuClientes = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +86,15 @@ public class AplicacionMDI extends javax.swing.JFrame {
         jMenuBar1.add(menuClientes);
 
         jMenu1.setText("ortro");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -110,6 +121,14 @@ public class AplicacionMDI extends javax.swing.JFrame {
             ventanaProductos.show();
         }
     }//GEN-LAST:event_menuProductosMouseClicked
+
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
+            ventanaInsertar = new VentanaVentasInsertar(this.escritorio, this.datos);
+            this.escritorio.add(ventanaInsertar);
+            ventanaInsertar.show();
+        }            
+    }//GEN-LAST:event_jMenuItem1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -150,6 +169,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuProductos;
     // End of variables declaration//GEN-END:variables
