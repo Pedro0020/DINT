@@ -16,6 +16,8 @@ public class AplicacionMDI extends javax.swing.JFrame {
     private VentanaProductos ventanaProductos;
     private VentanaClientes ventanaClientes;
     private VentanaVentasMod ventanaInsertar;
+    private VentanaBackUp ventanaBackUp;
+    private VentanaInformacion ventanaInfo;
 
     /**
      * Creates new form AplicacionMDI
@@ -24,6 +26,8 @@ public class AplicacionMDI extends javax.swing.JFrame {
         initComponents();
         datos = new BBDD();
         ventanaInsertar = null;
+        ventanaInfo = null;
+        ventanaBackUp = null;
         ventanaProductos = null;
         ventanaClientes = null;
     }
@@ -43,6 +47,8 @@ public class AplicacionMDI extends javax.swing.JFrame {
         menuClientes = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +94,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
         jMenu1.setText("Ventas");
 
-        jMenuItem1.setText("Insertar");
+        jMenuItem1.setText("Insertar/Actualizar");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseClicked(evt);
@@ -102,6 +108,22 @@ public class AplicacionMDI extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("BackUp ");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Info");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -137,13 +159,28 @@ public class AplicacionMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        System.out.println("AQUIE ENTRO");
         if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
             ventanaInsertar = new VentanaVentasMod(this.escritorio, this.datos);
             this.escritorio.add(ventanaInsertar);
             ventanaInsertar.show();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        if (ventanaBackUp == null || !ventanaBackUp.isVisible()) {
+            ventanaBackUp = new VentanaBackUp();
+            this.escritorio.add(ventanaBackUp);
+            ventanaBackUp.show();
+        }
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        if (ventanaInfo == null || !ventanaInfo.isVisible()) {
+            ventanaInfo = new VentanaInformacion();
+            this.escritorio.add(ventanaInfo);
+            ventanaInfo.show();
+        }
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -181,6 +218,8 @@ public class AplicacionMDI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuClientes;

@@ -24,6 +24,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     private JDesktopPane escritorio;
     private VentanaProductosTabla tablaProductos;
     private VentanaClientesTabla tablaClientes;
+    private VentanaVentasTabla tablaVentas;
 
     /**
      * Creates new form VentanaVentasInsertar
@@ -35,9 +36,10 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     VentanaVentasMod(JDesktopPane escritorio, BBDD datos) {
         initComponents();
         tablaClientes = null;
+        tablaVentas = null;
+        tablaProductos = null;
         txtCodigoArticulo.setEnabled(false);
         txtCodigoCliente.setEnabled(false);
-        tablaProductos = null;
         pos = 0;
         deshabilitarIntroducirDatos();
         this.datos = datos;
@@ -358,6 +360,11 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
         this.txtCodigoArticulo.setText(c);
     }
 
+    protected void datosVenta(String c) {
+        this.txtCodigoVenta.setText(c);
+        tomarDecision();
+    }
+
     private void limpiarDatos() {
         this.txtCantidad.setText("");
         this.txtPrecio.setText("");
@@ -410,8 +417,11 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        if (tablaVentas == null || !tablaVentas.isVisible()) {
+            tablaVentas = new VentanaVentasTabla(this.datos, this);
+            escritorio.add(tablaVentas);
+            tablaVentas.show();
+        }    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
