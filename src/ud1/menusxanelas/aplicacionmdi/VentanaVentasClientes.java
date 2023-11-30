@@ -68,7 +68,7 @@ public class VentanaVentasClientes extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Pulse para selecionar Cliente");
+        jLabel1.setText("Pulse para selecionar Articulo");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
