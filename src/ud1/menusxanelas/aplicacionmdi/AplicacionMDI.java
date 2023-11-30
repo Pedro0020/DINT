@@ -18,18 +18,23 @@ public class AplicacionMDI extends javax.swing.JFrame {
     private VentanaVentasMod ventanaInsertar;
     private VentanaBackUp ventanaBackUp;
     private VentanaInformacion ventanaInfo;
+    private VentanaVentasClientes ventanaVentasCliente;
+    private VentanaVentasArticulos ventanaVentasArticulos;
 
     /**
      * Creates new form AplicacionMDI
      */
     public AplicacionMDI() {
-        initComponents();
         datos = new BBDD();
         ventanaInsertar = null;
+        ventanaVentasCliente = null;
+        ventanaVentasArticulos = null;
         ventanaInfo = null;
         ventanaBackUp = null;
         ventanaProductos = null;
         ventanaClientes = null;
+        initComponents();
+
     }
 
     /**
@@ -47,6 +52,8 @@ public class AplicacionMDI extends javax.swing.JFrame {
         menuClientes = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemCl = new javax.swing.JMenuItem();
+        jMenuItemPr = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -106,6 +113,32 @@ public class AplicacionMDI extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
+
+        jMenuItemCl.setText("Ventas por Cliente");
+        jMenuItemCl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItemClMouseClicked(evt);
+            }
+        });
+        jMenuItemCl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCl);
+
+        jMenuItemPr.setText("Ventas por Producto");
+        jMenuItemPr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItemPrMouseClicked(evt);
+            }
+        });
+        jMenuItemPr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPrActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemPr);
 
         jMenuBar1.add(jMenu1);
 
@@ -182,6 +215,30 @@ public class AplicacionMDI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
+    private void jMenuItemClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClActionPerformed
+        if (ventanaVentasCliente == null || !ventanaVentasCliente.isVisible()) {
+            ventanaVentasCliente = new VentanaVentasClientes(this.datos, this);
+            this.escritorio.add(ventanaVentasCliente);
+            ventanaVentasCliente.show();
+        }
+    }//GEN-LAST:event_jMenuItemClActionPerformed
+
+    private void jMenuItemClMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemClMouseClicked
+//
+    }//GEN-LAST:event_jMenuItemClMouseClicked
+
+    private void jMenuItemPrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemPrMouseClicked
+        //
+    }//GEN-LAST:event_jMenuItemPrMouseClicked
+
+    private void jMenuItemPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrActionPerformed
+        if (ventanaVentasArticulos == null || !ventanaVentasArticulos.isVisible()) {
+            ventanaVentasArticulos = new VentanaVentasArticulos(this.datos, this);
+            this.escritorio.add(ventanaVentasArticulos);
+            ventanaVentasArticulos.show();
+        }
+    }//GEN-LAST:event_jMenuItemPrActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,6 +279,8 @@ public class AplicacionMDI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemCl;
+    private javax.swing.JMenuItem jMenuItemPr;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuProductos;
     // End of variables declaration//GEN-END:variables

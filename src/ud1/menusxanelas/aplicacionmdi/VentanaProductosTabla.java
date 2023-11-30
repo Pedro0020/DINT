@@ -94,6 +94,8 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
             ventanaProductos.datos(codigo);
         } else if (this.p instanceof VentanaVentasMod ventanaVentasMod) {
             ventanaVentasMod.datosProduto(codigo);
+        } else if (this.p instanceof VentanaVentasArticulos v) {
+            v.actualizarTabla(codigo);
         }
         dispose();
     }//GEN-LAST:event_jTable1MouseClicked

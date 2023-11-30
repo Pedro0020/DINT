@@ -25,6 +25,7 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
     public VentanaClientesTabla(BBDD datos, javax.swing.JInternalFrame v) {
         this.datos = datos;
         this.v = v;
+        System.out.println("Inicio cltabl");
         ArrayList<Cliente> data = this.datos.obtenerClientes();
         String[] columnNames = {"DNI", "Nombre", "Dirección", "Teléfono"};
         this.modelo = new DefaultTableModel();
@@ -98,6 +99,8 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
             ventanaClientes.datos(codigo);
         } else if (this.v instanceof VentanaVentasMod ventanaVentasMod) {
             ventanaVentasMod.datosCliente(codigo);
+        }else if(this.v instanceof VentanaVentasClientes v){
+            v.actualizarTabla(codigo);
         }
         dispose();
     }//GEN-LAST:event_jTable1MouseClicked
