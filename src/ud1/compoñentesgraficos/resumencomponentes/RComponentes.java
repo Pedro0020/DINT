@@ -22,10 +22,10 @@ public class RComponentes extends javax.swing.JFrame {
 
     public RComponentes() {
         initComponents();
-        basedatos = new BBDD();
+        basedatos = BBDD.getInstance();
         modeloClientes = new DefaultListModel();
         jList2.setModel(modeloClientes);
-        
+
     }
 
     /**
@@ -329,10 +329,9 @@ public class RComponentes extends javax.swing.JFrame {
 
     private void jButtonBorrar1ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrar1ClienteActionPerformed
         int indice = jList2.getSelectedIndex();
-        
-        
+
         if (indice > -1) {
-           Cliente  cliente=(Cliente) modeloClientes.get(indice);
+            Cliente cliente = (Cliente) modeloClientes.get(indice);
             basedatos.eliminarCliente(cliente.getDni());
             modeloClientes.remove(indice);
         }
@@ -340,12 +339,12 @@ public class RComponentes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBorrar1ClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente cliente =null;
+        Cliente cliente = null;
         if (jTextFieldDNI.contains(0, jTextFieldDNI.getText().length() - 1)
                 && textNombre.contains(0, textNombre.getText().length() - 1)
                 && jTextFieldDireccion.contains(0, jTextFieldDireccion.getText().length() - 1)
                 && jTextFieldTelefono.contains(0, jTextFieldTelefono.getText().length() - 1)) {
-            cliente =new Cliente(jTextFieldDNI.getText(), textNombre.getText(), jTextFieldDireccion.getText(), jTextFieldTelefono.getText());
+            cliente = new Cliente(jTextFieldDNI.getText(), textNombre.getText(), jTextFieldDireccion.getText(), jTextFieldTelefono.getText());
             basedatos.agregarCliente(cliente);
             modeloClientes.addElement(cliente);
         }

@@ -24,7 +24,7 @@ public class MaestroDetalle extends javax.swing.JFrame {
      */
     public MaestroDetalle() {
         initComponents();
-        basedatos = new BBDD();
+        basedatos = BBDD.getInstance();
         modeloArticulos = new DefaultTableModel();
         modeloVentas = new DefaultTableModel();
         this.jTable4.setModel(modeloArticulos);

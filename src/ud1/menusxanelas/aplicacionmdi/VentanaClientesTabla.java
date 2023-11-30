@@ -101,6 +101,7 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
             ventanaVentasMod.datosCliente(codigo);
         }else if(this.v instanceof VentanaVentasClientes v){
             v.actualizarTabla(codigo);
+            System.out.println("HOLA1");
         }
         dispose();
     }//GEN-LAST:event_jTable1MouseClicked

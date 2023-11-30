@@ -4,15 +4,12 @@
  */
 package ud1.menusxanelas.aplicacionmdi;
 
-import ud1.BBDD;
-
 /**
  *
  * @author neo
  */
 public class AplicacionMDI extends javax.swing.JFrame {
 
-    private BBDD datos;
     private VentanaProductos ventanaProductos;
     private VentanaClientes ventanaClientes;
     private VentanaVentasMod ventanaInsertar;
@@ -25,7 +22,6 @@ public class AplicacionMDI extends javax.swing.JFrame {
      * Creates new form AplicacionMDI
      */
     public AplicacionMDI() {
-        datos = new BBDD();
         ventanaInsertar = null;
         ventanaVentasCliente = null;
         ventanaVentasArticulos = null;
@@ -58,8 +54,6 @@ public class AplicacionMDI extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        escritorio.setBackground(new java.awt.Color(153, 204, 255));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -169,7 +163,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
     private void menuClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuClientesMouseClicked
         if (ventanaClientes == null || !ventanaClientes.isVisible()) {
-            ventanaClientes = new VentanaClientes(this.escritorio, this.datos);
+            ventanaClientes = new VentanaClientes();
             this.escritorio.add(ventanaClientes);
             ventanaClientes.show();
         }
@@ -177,23 +171,19 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
     private void menuProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProductosMouseClicked
         if (ventanaProductos == null || !ventanaProductos.isVisible()) {
-            ventanaProductos = new VentanaProductos(this.escritorio, this.datos);
+            ventanaProductos = new VentanaProductos();
             this.escritorio.add(ventanaProductos);
             ventanaProductos.show();
         }
     }//GEN-LAST:event_menuProductosMouseClicked
 
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-        if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
-            ventanaInsertar = new VentanaVentasMod(this.escritorio, this.datos);
-            this.escritorio.add(ventanaInsertar);
-            ventanaInsertar.show();
-        }
+
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         if (ventanaInsertar == null || !ventanaInsertar.isVisible()) {
-            ventanaInsertar = new VentanaVentasMod(this.escritorio, this.datos);
+            ventanaInsertar = new VentanaVentasMod();
             this.escritorio.add(ventanaInsertar);
             ventanaInsertar.show();
         }
@@ -217,7 +207,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
     private void jMenuItemClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClActionPerformed
         if (ventanaVentasCliente == null || !ventanaVentasCliente.isVisible()) {
-            ventanaVentasCliente = new VentanaVentasClientes(this.datos, this);
+            ventanaVentasCliente = new VentanaVentasClientes();
             this.escritorio.add(ventanaVentasCliente);
             ventanaVentasCliente.show();
         }
@@ -233,7 +223,7 @@ public class AplicacionMDI extends javax.swing.JFrame {
 
     private void jMenuItemPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrActionPerformed
         if (ventanaVentasArticulos == null || !ventanaVentasArticulos.isVisible()) {
-            ventanaVentasArticulos = new VentanaVentasArticulos(this.datos, this);
+            ventanaVentasArticulos = new VentanaVentasArticulos();
             this.escritorio.add(ventanaVentasArticulos);
             ventanaVentasArticulos.show();
         }

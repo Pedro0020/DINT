@@ -5,6 +5,7 @@
 package ud1.menusxanelas.aplicacionmdi;
 
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
 import ud1.BBDD;
 import ud1.Venta;
@@ -17,7 +18,6 @@ public class VentanaVentasArticulos extends javax.swing.JInternalFrame {
 
     private BBDD datos;
     private DefaultTableModel modelo;
-    private javax.swing.JFrame escritorio;
     private VentanaProductosTabla tablaProductos;
 
     /**
@@ -27,10 +27,9 @@ public class VentanaVentasArticulos extends javax.swing.JInternalFrame {
      * @param v
      * @param
      */
-    public VentanaVentasArticulos(BBDD datos, javax.swing.JFrame v) {
+    public VentanaVentasArticulos() {
         initComponents();
-        this.datos = datos;
-        this.escritorio = v;
+        this.datos = BBDD.getInstance();
         this.tablaProductos = null;
         this.modelo = new DefaultTableModel();
         String[] columnNames = {"Codigo", "Fecha", "CodClientes", "CodArticulo",
@@ -38,6 +37,8 @@ public class VentanaVentasArticulos extends javax.swing.JInternalFrame {
         for (String col : columnNames) {
             this.modelo.addColumn(col);
         }
+        jTable1.setModel(modelo);
+
     }
 
     /**
@@ -68,7 +69,7 @@ public class VentanaVentasArticulos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Pulse para selecionar Cliente");
+        jLabel1.setText("Pulse para selecionar Articulo");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,11 +123,12 @@ public class VentanaVentasArticulos extends javax.swing.JInternalFrame {
         //ENTRA DENTRO DEL BUCLE PERO NO LA MUESTRA
         if (tablaProductos == null || !tablaProductos.isVisible()) {
             tablaProductos = new VentanaProductosTabla(this.datos, this);
-            escritorio.add(tablaProductos);
+            getParent().add(tablaProductos);
             tablaProductos.show();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     public void actualizarTabla(String codigoArticulo) {
+        this.modelo.setRowCount(0);
         ArrayList<Venta> data = this.datos.obtenerVentas();
         for (Venta venta : data) {
             if (venta.getCodArt().equals(codigoArticulo)) {

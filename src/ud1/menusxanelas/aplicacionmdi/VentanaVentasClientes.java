@@ -17,20 +17,16 @@ public class VentanaVentasClientes extends javax.swing.JInternalFrame {
 
     private BBDD datos;
     private DefaultTableModel modelo;
-    private javax.swing.JFrame escritorio;
     private VentanaClientesTabla tablaClientes;
 
     /**
      * Creates new form VentasClientes
      *
-     * @param datos
-     * @param v
      * @param
      */
-    public VentanaVentasClientes(BBDD datos, javax.swing.JFrame v) {
+    public VentanaVentasClientes() {
         initComponents();
-        this.datos = datos;
-        this.escritorio = v;
+        this.datos = BBDD.getInstance();
         this.tablaClientes = null;
         this.modelo = new DefaultTableModel();
         String[] columnNames = {"Codigo", "Fecha", "CodClientes", "CodArticulo",
@@ -38,6 +34,7 @@ public class VentanaVentasClientes extends javax.swing.JInternalFrame {
         for (String col : columnNames) {
             this.modelo.addColumn(col);
         }
+        jTable1.setModel(modelo);
     }
 
     /**
@@ -122,11 +119,13 @@ public class VentanaVentasClientes extends javax.swing.JInternalFrame {
         //ENTRA DENTRO DEL BUCLE PERO NO LA MUESTRA
         if (tablaClientes == null || !tablaClientes.isVisible()) {
             tablaClientes = new VentanaClientesTabla(this.datos, this);
-            escritorio.add(tablaClientes);
+            getParent().add(tablaClientes);
             tablaClientes.show();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     public void actualizarTabla(String codigoCliente) {
+        this.modelo.setRowCount(0);
+        System.out.println("HOLA");
         ArrayList<Venta> data = this.datos.obtenerVentas();
         for (Venta venta : data) {
             if (venta.getCodCli().equals(codigoCliente)) {

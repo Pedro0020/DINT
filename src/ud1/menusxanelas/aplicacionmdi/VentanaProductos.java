@@ -21,7 +21,6 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     public static final int NUM_MOD = 110;
     public static final int NUM_INS = 100;
     private VentanaProductosTabla tablaProductos;
-    private final JDesktopPane escritorio;
 
     /**
      * Creates new form VentanaProductos
@@ -29,15 +28,13 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
      * @param escritorio
      * @param datos
      */
-    public VentanaProductos(JDesktopPane escritorio, BBDD datos) {
+    public VentanaProductos() {
         initComponents();
         deshabilitarIntroducirDatos();
         tablaProductos = null;
         pos = 0;
-        this.escritorio = escritorio;
-        this.datos = datos;
+        this.datos = BBDD.getInstance();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -336,7 +333,7 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (tablaProductos == null || !tablaProductos.isVisible()) {
             tablaProductos = new VentanaProductosTabla(this.datos, this);
-            escritorio.add(tablaProductos);
+            getParent().add(tablaProductos);
             tablaProductos.show();
         }    }//GEN-LAST:event_jToggleButton1ActionPerformed
 

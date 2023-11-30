@@ -16,8 +16,9 @@ public class BBDD {
     private ArrayList<Articulo> articulos;
     private ArrayList<Venta> ventas;
     private int indiceActual;
+    private static BBDD instancia;
 
-    public BBDD() {
+    private BBDD() {
         clientes = new ArrayList<>();
         // Puedes agregar datos iniciales si lo deseas
         clientes.add(new Cliente("111", "Jose Luis", "Marín", "986554433"));
@@ -49,7 +50,13 @@ public class BBDD {
         ventas.add(new Venta("6", "05/05/2023", "222", "EE", 1, 5));
         ventas.add(new Venta("7", "05/06/2023", "333", "AA", 1, 660));
         ventas.add(new Venta("8", "01/07/2023", "333", "GG", 1, 3));
+    }
 
+    public static BBDD getInstance() {
+        if (instancia == null) {
+            instancia = new BBDD();
+        }
+        return instancia;
     }
 
     // Método para obtener todos los registros

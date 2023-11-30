@@ -21,7 +21,6 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     public static final int NUM_MOD = 110;
     public static final int NUM_INS = 100;
     private BBDD datos;
-    private JDesktopPane escritorio;
     private VentanaProductosTabla tablaProductos;
     private VentanaClientesTabla tablaClientes;
     private VentanaVentasTabla tablaVentas;
@@ -31,10 +30,6 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
      */
     public VentanaVentasMod() {
         initComponents();
-    }
-
-    VentanaVentasMod(JDesktopPane escritorio, BBDD datos) {
-        initComponents();
         tablaClientes = null;
         tablaVentas = null;
         tablaProductos = null;
@@ -42,8 +37,6 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
         txtCodigoCliente.setEnabled(false);
         pos = 0;
         deshabilitarIntroducirDatos();
-        this.datos = datos;
-        this.escritorio = escritorio;
     }
 
     /**
@@ -403,7 +396,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
 
         if (tablaClientes == null || !tablaClientes.isVisible()) {
             tablaClientes = new VentanaClientesTabla(this.datos, this);
-            escritorio.add(tablaClientes);
+            getParent().add(tablaClientes);
             tablaClientes.show();
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
@@ -411,7 +404,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         if (tablaProductos == null || !tablaProductos.isVisible()) {
             tablaProductos = new VentanaProductosTabla(this.datos, this);
-            escritorio.add(tablaProductos);
+            getParent().add(tablaProductos);
             tablaProductos.show();
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
@@ -419,7 +412,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (tablaVentas == null || !tablaVentas.isVisible()) {
             tablaVentas = new VentanaVentasTabla(this.datos, this);
-            escritorio.add(tablaVentas);
+            getParent().add(tablaVentas);
             tablaVentas.show();
         }    }//GEN-LAST:event_jButton4ActionPerformed
 

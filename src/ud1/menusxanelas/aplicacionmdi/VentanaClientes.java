@@ -21,15 +21,13 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
     public static final int NUM_MOD = 110;
     public static final int NUM_INS = 100;
     private VentanaClientesTabla tablaClientes;
-    private JDesktopPane escritorio;
 
     /**
      * Creates new form VentanaClientes
      */
-    public VentanaClientes(JDesktopPane escritorio, BBDD datos) {
+    public VentanaClientes( ) {
         initComponents();
-        this.datos = datos;
-        this.escritorio = escritorio;
+        this.datos = BBDD.getInstance();
         pos = 0;
         tablaClientes = null;
         deshabilitarIntroducirDatos();
@@ -313,7 +311,7 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (tablaClientes == null || !tablaClientes.isVisible()) {
             tablaClientes = new VentanaClientesTabla(this.datos, this);
-            escritorio.add(tablaClientes);
+            getParent().add(tablaClientes);
             tablaClientes.show();
         }    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
