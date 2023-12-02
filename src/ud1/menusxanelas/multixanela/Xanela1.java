@@ -4,7 +4,7 @@
  */
 package ud1.menusxanelas.multixanela;
 
-import pruebas.PruebaJDialogo;
+import pruebas.pruebax.PruebaJDialogo;
 
 /**
  *
