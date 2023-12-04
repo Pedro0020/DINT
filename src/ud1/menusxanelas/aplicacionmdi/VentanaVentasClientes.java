@@ -118,7 +118,7 @@ public class VentanaVentasClientes extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //ENTRA DENTRO DEL BUCLE PERO NO LA MUESTRA
         if (tablaClientes == null || !tablaClientes.isVisible()) {
-            tablaClientes = new VentanaClientesTabla(this.datos, this);
+            tablaClientes = new VentanaClientesTabla( this);
             getParent().add(tablaClientes);
             tablaClientes.show();
         }

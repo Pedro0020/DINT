@@ -22,8 +22,8 @@ public class VentanaVentasTabla extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentaVentasTabla
      */
-    public VentanaVentasTabla(BBDD datos, javax.swing.JInternalFrame v) {
-        this.datos = datos;
+    public VentanaVentasTabla( javax.swing.JInternalFrame v) {
+        this.datos = BBDD.getInstance();
         this.v = v;
         ArrayList<Venta> data = this.datos.obtenerVentas();
         this.modelo = new DefaultTableModel();

@@ -4,6 +4,7 @@
  */
 package ud1.compoñentesgraficos.maestro_detalle;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ud1.Articulo;
 import ud1.BBDD;
@@ -428,6 +429,7 @@ public class MaestroDetalle extends javax.swing.JFrame {
                     textFecha.getText(),
                     txtCodigoCliente.getText() + "",
                     (String) jTable4.getValueAt(jTable4.getSelectedRow(), NORMAL),
+                    
                     Integer.parseInt(textCantidad.getText()),
                     Integer.parseInt(textPrecio.getText()));
             for (Venta vent : this.basedatos.obtenerVentas()) {
@@ -442,7 +444,8 @@ public class MaestroDetalle extends javax.swing.JFrame {
                 this.modeloVentas.setRowCount(0);
                 actualizarTabla5();
             }
-        }
+        }else if(textCodigo.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "No has introducido datos");}
      }//GEN-LAST:event_btnAñadirVentaActionPerformed
 
     /**

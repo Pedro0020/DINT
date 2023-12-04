@@ -395,7 +395,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
 
         if (tablaClientes == null || !tablaClientes.isVisible()) {
-            tablaClientes = new VentanaClientesTabla(this.datos, this);
+            tablaClientes = new VentanaClientesTabla(this);
             getParent().add(tablaClientes);
             tablaClientes.show();
         }
@@ -411,7 +411,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (tablaVentas == null || !tablaVentas.isVisible()) {
-            tablaVentas = new VentanaVentasTabla(this.datos, this);
+            tablaVentas = new VentanaVentasTabla( this);
             getParent().add(tablaVentas);
             tablaVentas.show();
         }    }//GEN-LAST:event_jButton4ActionPerformed

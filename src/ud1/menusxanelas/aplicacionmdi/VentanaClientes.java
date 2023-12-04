@@ -25,7 +25,7 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaClientes
      */
-    public VentanaClientes( ) {
+    public VentanaClientes() {
         initComponents();
         this.datos = BBDD.getInstance();
         pos = 0;
@@ -310,7 +310,7 @@ public class VentanaClientes extends javax.swing.JInternalFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (tablaClientes == null || !tablaClientes.isVisible()) {
-            tablaClientes = new VentanaClientesTabla(this.datos, this);
+            tablaClientes = new VentanaClientesTabla(this);
             getParent().add(tablaClientes);
             tablaClientes.show();
         }    }//GEN-LAST:event_jToggleButton1ActionPerformed

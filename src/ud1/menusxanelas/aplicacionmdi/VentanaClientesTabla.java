@@ -22,8 +22,8 @@ public class VentanaClientesTabla extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaProductosTabla
      */
-    public VentanaClientesTabla(BBDD datos, javax.swing.JInternalFrame v) {
-        this.datos = datos;
+    public VentanaClientesTabla( javax.swing.JInternalFrame v) {
+        this.datos = BBDD.getInstance();
         this.v = v;
         System.out.println("Inicio cltabl");
         ArrayList<Cliente> data = this.datos.obtenerClientes();
