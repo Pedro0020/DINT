@@ -403,7 +403,7 @@ public class VentanaVentasMod extends javax.swing.JInternalFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         if (tablaProductos == null || !tablaProductos.isVisible()) {
-            tablaProductos = new VentanaProductosTabla(this.datos, this);
+            tablaProductos = new VentanaProductosTabla( this);
             getParent().add(tablaProductos);
             tablaProductos.show();
         }

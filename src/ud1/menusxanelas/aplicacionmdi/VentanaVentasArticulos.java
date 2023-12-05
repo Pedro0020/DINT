@@ -122,7 +122,7 @@ public class VentanaVentasArticulos extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //ENTRA DENTRO DEL BUCLE PERO NO LA MUESTRA
         if (tablaProductos == null || !tablaProductos.isVisible()) {
-            tablaProductos = new VentanaProductosTabla(this.datos, this);
+            tablaProductos = new VentanaProductosTabla(this);
             getParent().add(tablaProductos);
             tablaProductos.show();
         }

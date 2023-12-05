@@ -332,7 +332,7 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (tablaProductos == null || !tablaProductos.isVisible()) {
-            tablaProductos = new VentanaProductosTabla(this.datos, this);
+            tablaProductos = new VentanaProductosTabla(this);
             getParent().add(tablaProductos);
             tablaProductos.show();
         }    }//GEN-LAST:event_jToggleButton1ActionPerformed
