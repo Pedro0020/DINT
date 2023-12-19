@@ -25,8 +25,8 @@ public class VentanaProductosTabla extends javax.swing.JInternalFrame {
      * @param datos
      * @param p
      */
-    public VentanaProductosTabla(BBDD datos, javax.swing.JInternalFrame p) {
-        this.datos = datos;
+    public VentanaProductosTabla(javax.swing.JInternalFrame p) {
+        this.datos = BBDD.getInstance();
         this.p = p;
         ArrayList<Articulo> data = this.datos.obtenerArticulos();
         String[] columnNames = {"Codigo", "Articulo", "Unidad", "Cantidad", "Precio",
