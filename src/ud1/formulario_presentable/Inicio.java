@@ -20,8 +20,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        ImageIcon im = new ImageIcon("imagen/fondo.jpg");
-
+        setResizable(false);
     }
 
     /**
@@ -38,12 +37,21 @@ public class Inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(400, 300));
+        setMinimumSize(new java.awt.Dimension(400, 300));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        jTextField1.setBackground(new java.awt.Color(204, 255, 204));
         jTextField1.setToolTipText("Introduzca un correo");
 
+        jButton2.setBackground(new java.awt.Color(153, 153, 255));
         jButton2.setText("Log in");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,6 +78,11 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CrearUsuario u = new CrearUsuario(this, this.jTextField1.getText());
+        u.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
