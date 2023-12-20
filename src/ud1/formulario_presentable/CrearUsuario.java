@@ -11,6 +11,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
+import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 import ud1.cardlayaut.CardLayaut;
 
@@ -32,6 +33,8 @@ public class CrearUsuario extends javax.swing.JDialog {
         this.deshabilitarTodo();
         setResizable(false);
         txtCorreo.setText(correo);
+        ImageIcon icon = new ImageIcon("tenor.gif");
+        jLabel6.setIcon(icon);
     }
 
     /**
@@ -57,6 +60,7 @@ public class CrearUsuario extends javax.swing.JDialog {
         txtN = new javax.swing.JTextField();
         btnUs = new javax.swing.JButton();
         btnF = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -67,22 +71,33 @@ public class CrearUsuario extends javax.swing.JDialog {
         jPanel3.setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Correo");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(15, 17, 130, 17);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contraseña");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(15, 75, 140, 17);
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuario");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(15, 133, 130, 17);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(15, 200, 140, 17);
 
         txtCorreo.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(txtCorreo);
+        txtCorreo.setBounds(15, 40, 214, 23);
 
         btnCorreo.setBackground(new java.awt.Color(153, 153, 255));
         btnCorreo.setText("Validar");
@@ -91,8 +106,12 @@ public class CrearUsuario extends javax.swing.JDialog {
                 btnCorreoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCorreo);
+        btnCorreo.setBounds(241, 40, 72, 23);
 
         txtU.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(txtU);
+        txtU.setBounds(15, 162, 214, 23);
 
         btnPass.setBackground(new java.awt.Color(153, 153, 255));
         btnPass.setText("Validar");
@@ -101,10 +120,16 @@ public class CrearUsuario extends javax.swing.JDialog {
                 btnPassActionPerformed(evt);
             }
         });
+        jPanel1.add(btnPass);
+        btnPass.setBounds(241, 98, 72, 23);
 
         jPasswordField1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(jPasswordField1);
+        jPasswordField1.setBounds(15, 98, 214, 23);
 
         txtN.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.add(txtN);
+        txtN.setBounds(15, 223, 214, 23);
 
         btnUs.setBackground(new java.awt.Color(153, 153, 255));
         btnUs.setText("Validar");
@@ -113,6 +138,8 @@ public class CrearUsuario extends javax.swing.JDialog {
                 btnUsActionPerformed(evt);
             }
         });
+        jPanel1.add(btnUs);
+        btnUs.setBounds(241, 162, 72, 23);
 
         btnF.setBackground(new java.awt.Color(153, 153, 255));
         btnF.setText("Validar");
@@ -121,68 +148,10 @@ public class CrearUsuario extends javax.swing.JDialog {
                 btnFActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtU, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCorreo)
-                                    .addComponent(btnPass)
-                                    .addComponent(btnUs)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtN, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnF)))
-                        .addGap(41, 41, 41))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCorreo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPass)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUs))
-                .addGap(15, 15, 15)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnF))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        jPanel1.add(btnF);
+        btnF.setBounds(241, 223, 72, 23);
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(-5, -5, 360, 280);
 
         jPanel3.add(jPanel1, "card2");
 
@@ -276,6 +245,7 @@ public class CrearUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
